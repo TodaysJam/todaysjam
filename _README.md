@@ -4,9 +4,9 @@
 
 ## Team
 
-  - __Product Owner__: teamMember
-  - __Scrum Master__: teamMember
-  - __Development Team Members__: teamMember, teamMember
+  - __Product Owner__: Sherman Chen
+  - __Scrum Master__: Tim Garibaldi
+  - __Development Team Members__: Sheng Yang, Jeff Christian
 
 ## Table of Contents
 
@@ -33,6 +33,11 @@
 ## Development
 
 ### Installing Dependencies
+Our app was built using React Native. To use react native you need to download the Exponent development tools on both your phone and work station (www.getexponent.com). You can find more info on gettin started here: https://facebook.github.io/react-native/docs/getting-started.html
+
+brew install node
+brew install watchman
+npm install -g react-native-cli
 
 From within the root directory:
 
