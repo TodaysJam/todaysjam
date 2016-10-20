@@ -1,10 +1,10 @@
 {
-  "name": "my-new-project",
+  "name": "todaysjam",
   "version": "0.0.0",
   "description": "Hello Exponent!",
   "author": null,
   "private": true,
-  "main": "main.js",
+  "main": "index.ios.js",
   "dependencies": {
     "body-parser": "^1.15.2",
     "chai": "^3.5.0",
