@@ -1,41 +1,45 @@
 import Exponent from 'exponent';
 import React from 'react';
-import Main from './client/components/MyScene.js';
-import { ListView, TouchableHighlight, NavigatorIOS, Text, View } from 'react-native';
+import HomeScreen from './client/Screens/HomeScreen.js';
+import { 
+  ListView, 
+  TouchableHighlight, 
+  NavigatorIOS, 
+  Text, 
+  View, 
+  StyleSheet 
+} from 'react-native';
+import {
+  NavigationProvider,
+  StackNavigation,
+} from '@exponent/ex-navigation';
+
+
+import Router from './client/Navigation/Router';
+
 
 export class App extends React.Component {
-  constructor() {
-    super();
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    this.state = {
-      dataSource: ds.cloneWithRows([1, 2, 3, 4, 5, 6, 6]),
-    };
-  }
+ 
   render() {
+    let initialRoute = Router.getRoute('rootNavigation');
     return (
-      <View>
-        <View>
-          <ListView
-            dataSource={this.state.dataSource}
-            renderRow={(rowData, i) => (
-            //* Need to figure out how to map touchable elements */
-                <Text key={i}>{rowData}</Text>
-            )}
+      <View style={styles.container}>
+        <NavigationProvider router={Router}>
+          <StackNavigation
+            id='root'
+            initialRoute={initialRoute}
           />
-        </View>
-        <View>
-          <TouchableHighlight>
-            <Text>Find</Text>
-          </TouchableHighlight>
-          <TouchableHighlight>
-            <Text>Create</Text>
-          </TouchableHighlight>
-        </View>
+        </NavigationProvider>
       </View>
     );
   }
 }
 
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  }
+});
 
 Exponent.registerRootComponent(App);
