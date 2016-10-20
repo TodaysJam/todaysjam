@@ -20,15 +20,13 @@ export default class HomeScreen extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView style={styles.container}>
-          <View>
-             <ListView
-              dataSource={this.state.dataSource}
-              renderRow={(rowData, i) => (
-              //* Need to figure out how to map touchable elements */
-                  <Text key={i}>{rowData}</Text>
-              )}
-            />
-          </View>
+         <ListView
+          dataSource={this.state.dataSource}
+          renderRow={(rowData, i) => (
+          //* Need to figure out how to map touchable elements */
+            <Text key={i}>{rowData}</Text>
+          )}
+        />
         </ScrollView>
           <View>
             <TouchableOpacity>
