@@ -17,7 +17,10 @@ export class App extends React.Component {
         <View>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={(rowData, i) => <Text key={i}>{rowData}</Text>}
+            renderRow={(rowData, i) => (
+            //* Need to figure out how to map touchable elements */
+                <Text key={i}>{rowData}</Text>
+            )}
           />
         </View>
         <View>
