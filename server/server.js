@@ -25,10 +25,17 @@ app.use(parser.urlencoded({ extended: true }));
 app.post('/api/users/login', handler.loginUser);
 app.post('/api/users/signup', handler.signupUser);
 
-app.get('/api/jams', handler.fetchJams);
-app.post('/api/jams', handler.createJam);
+// app.get('/api/jams', handler.fetchJams);
+
 
 app.get('/api/logout', function() {return true;});
+
+
+app.get('/api/users/jams', handler.fetchUsersJams);
+app.get('/api/jams', handler.getJamDetails);
+app.post('/api/users/jams/checkin', handler.checkinToJam);
+app.post('/api/jams/create', handler.createJam);
+
 
 app.listen(process.env.PORT || port);
 console.log('server is serving at port: ', process.env.PORT || port);

@@ -13,9 +13,10 @@ var UserSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  memberOfJams: [{ type: mongoose.Schema.ObjectId, ref: 'jams' }],
-  ownerOfJams: [{ type: mongoose.Schema.ObjectId, ref: 'jams' }]
+  jams: {} 
 });
+
+//jam object should be {jamObjectID or name : score for jam}
 
 User = mongoose.model('users', UserSchema);
 
