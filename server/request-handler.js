@@ -47,14 +47,24 @@ exports.signupUser = function (req, res) {
 }
 
 // fetch all jams for the given user
-// requires "user" field with username
+// requires "username" field with username
 exports.fetchJams = function (req, res) {
-  Jam.find({username: req.body.user}).exec(function(err, jams) {
+  Jam.find({username: req.body.username}).exec(function(err, jams) {
     res.status(200).send(jams);
   });
 }
 
-exports.createJam = function (req, res) {
 
-}
+
+exports.fetchUsersJams = function (req, res) {};
+
+exports.getJamDetails = function (req, res) {};
+
+//increment counter and set last checkin timer 
+// which we qill query when deciding when to show new
+// jams
+exports.checkinToJam = function (req, res) {};
+
+exports.createJam = function (req, res) {};
+
 
