@@ -29,6 +29,7 @@ export default class RootNavigation extends Component {
         <TabNavigationItem
           id="discover"
           renderIcon={isSelected => this._renderEntypo('compass', isSelected)}>
+            <StackNavigation initialRoute={Router.getRoute('discover')}/>
         </TabNavigationItem>
 
         <TabNavigationItem
@@ -40,6 +41,7 @@ export default class RootNavigation extends Component {
         <TabNavigationItem 
           id="jams"
           renderIcon={isSelected => this._renderIonicons('ios-bonfire', isSelected)}>
+            <StackNavigation initialRoute={Router.getRoute('jams')}/>
         </TabNavigationItem>
 
       </TabNavigation>

@@ -1,16 +1,15 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, ScrollView, NavigatorIOS, Text } from 'react-native';
+import { View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 
-class MyScene extends Component {
+export default class DiscoverScreen extends Component {
   render() {
     return (
       <View>
         <ScrollView style={styles.container} >
-          <Text>Current Scene: { this.props.title }</Text>
-          <TouchableHighlight onPress={this._onForward}>
-            <Text>Tap me to load the next scene</Text>
-          </TouchableHighlight>
+          <TouchableOpacity >
+            <Text>DISCOVERDISCOVERDISCOVER</Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     );
