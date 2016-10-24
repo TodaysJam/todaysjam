@@ -28,9 +28,8 @@ export default class LoginScreen extends React.Component {
           Login
         </TouchableOpacity>
         <View>
-          <Text> Don't have an Account?</Text>
           <TouchableOpacity>
-            <Text>SignUp</Text>
+            <Text> Don't have an Account?</Text>
           </TouchableOpacity>
         </View>
       </View>

@@ -13,7 +13,7 @@ export default class LoginScreen extends React.Component {
   render() {
     return (
       <View>
-        <Text>Login and Jam Out!</Text>
+        <Text>SignUp and Jam Out!</Text>
         <TextInput
           style={{height: 40, borderColor: 'gray', borderWidth: 1}}
           onChangeText={(text) => this.setState({Username: text1})}
@@ -25,13 +25,12 @@ export default class LoginScreen extends React.Component {
           value={this.state.Password}
         />
         <TouchableOpacity>
-          Login
+          SignUp
         </TouchableOpacity>
         <View>
+        <TouchableOpacity>
           <Text> Already have an Account?</Text>
-          <TouchableOpacity>
-            <Text>Login</Text>
-          </TouchableOpacity>
+        </TouchableOpacity>          
         </View>
       </View>
     );
