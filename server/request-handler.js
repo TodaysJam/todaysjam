@@ -46,17 +46,20 @@ exports.signupUser = function (req, res) {
   })
 }
 
-// fetch all jams for the given user
-// requires "username" field with username
+// fetch all jams 
 exports.fetchJams = function (req, res) {
-  Jam.find({username: req.body.username}).exec(function(err, jams) {
+  Jam.find({}).exec(function(err, jams) {
     res.status(200).send(jams);
   });
 }
 
 
+// fetch all jams for the given user
+// requires "username" field with username
 exports.fetchUsersJams = function (req, res) {
-
+  Jam.find({username: req.body.username}).exec(function(err, jams) {
+    res.status(200).send(jams);
+  });
 };
 
 //get the info on a given jam once a user clicks on it
@@ -68,10 +71,41 @@ exports.getJamDetails = function (req, res) {
 };
 
 //increment counter and set last checkin timer 
-// which we qill query when deciding when to show new
+// which we will query when deciding when to show new
 // jams
-exports.checkinToJam = function (req, res) {};
+// example API req object: "{"id":"580e793b068d540a65858365"}"
+exports.checkinToJam = function (req, res) {
+  Jam.findById(req.body.id, function(err, jam) {
+    console.log(jam);
+    jam.lastCheckin = Date.now();
+    jam.score++;
+    jam.save(function (err, updatedJam) {
+      if (err) {
+        return console.error(err);
+      } else {
+        res.status(200).send(updatedJam);
+      }
+    })
+  });
+};
 
-exports.createJam = function (req, res) {};
+exports.createJam = function (req, res) {
+  var newJam = new Jam({
+    name: req.body.name,
+    description: req.body.description,
+    public: req.body.public,
+    score: 0,
+    lastCheckin: undefined,
+    user: req.body.userId
+  })
+  newJam.save(function(err, savedJam) {
+    if (err) {
+      return console.error(err);
+    } else {
+      res.status(200).send(savedJam);
+    }
+  })
+};
+
 
 
