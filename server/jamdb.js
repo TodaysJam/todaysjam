@@ -12,4 +12,4 @@ var JamSchema = new mongoose.Schema({
 
 var Jam = mongoose.model('jams', JamSchema);
 
-module.exports = Jam;s
+module.exports = Jam;

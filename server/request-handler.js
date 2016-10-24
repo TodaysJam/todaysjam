@@ -55,10 +55,17 @@ exports.fetchJams = function (req, res) {
 }
 
 
+exports.fetchUsersJams = function (req, res) {
 
-exports.fetchUsersJams = function (req, res) {};
+};
 
-exports.getJamDetails = function (req, res) {};
+//get the info on a given jam once a user clicks on it
+// call should pass in the jam ID 
+exports.getJamDetails = function (req, res) {
+  Jam.find({id: req.body.id}).exec(function(err, jam) {
+    res.status(200).send(jam);
+  });
+};
 
 //increment counter and set last checkin timer 
 // which we qill query when deciding when to show new
