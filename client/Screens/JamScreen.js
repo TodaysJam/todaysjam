@@ -12,32 +12,26 @@ export default class DiscoverScreen extends Component {
   }
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         <Image 
           source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
           style={{width: 100, height: 40, marginLeft: 125, marginTop: 30}} 
           />
-        <ScrollView style={styles.container} >
-          <TouchableOpacity >
-            <Text style={styles.text}>Create your Job</Text>
-          </TouchableOpacity>
-          <TouchableOpacity >
+          <View style={styles.formy}>
+            <Text style={styles.textB}>Create your Jam!</Text>
             <TextInput
               style={{height: 40, borderColor: 'gray', borderWidth: 1}}
               onChangeText={(text1) => this.setState({text1: text1})}
               value={this.state.text1}
             />
-          </TouchableOpacity>
-          <TouchableOpacity >
             <TextInput
               style={{height: 40, borderColor: 'gray', borderWidth: 1}}
               onChangeText={(text) => this.setState({text: text})}
               value={this.state.text}
             />
-          </TouchableOpacity>
-        </ScrollView>
-        <TouchableOpacity>
-          <Text>Submit</Text>
+          </View>
+        <TouchableOpacity style={styles.addBordy}>
+          <Text style={styles.textS}>Submit</Text>
         </TouchableOpacity>
       </View>
     );
@@ -52,10 +46,27 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 16
   },
+  textB: {
+    fontSize: 20,
+    fontWeight: 'bold'
+  },
+  textS: {
+    fontSize: 12,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
   bordy: {
     borderWidth: 1,
     borderRadius: 10,
     height: 60,
+  },
+  addBordy: {
+    marginBottom: 10,
+    borderWidth: 2,
+    borderRadius: 5,
+    width: 60,
+  },
+  formy: {
+    marginTop: 80
   }
-
 });
