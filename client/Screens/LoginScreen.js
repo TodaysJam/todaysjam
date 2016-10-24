@@ -2,7 +2,7 @@ import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 
-export default class LoginScreen extends React.Component {
+export default class LoginScreen extends Component {
   constructor() {
     super();
     this.state = {
@@ -15,17 +15,17 @@ export default class LoginScreen extends React.Component {
       <View>
         <Text>Login and Jam Out!</Text>
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => this.setState({Username: text1})}
+          style={styles.input}
+          onChangeText={(text) => this.setState({Username: text})}
           value={this.state.Username}
         />
         <TextInput
-          style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-          onChangeText={(text) => this.setState({text: Password})}
+          style={styles.input}
+          onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
         />
         <TouchableOpacity>
-          Login
+          <Text>Login</Text>
         </TouchableOpacity>
         <View>
           <TouchableOpacity>
@@ -36,3 +36,11 @@ export default class LoginScreen extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1
+  }
+});

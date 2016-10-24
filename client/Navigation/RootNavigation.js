@@ -44,6 +44,14 @@ export default class RootNavigation extends Component {
             <StackNavigation initialRoute={Router.getRoute('jams')}/>
         </TabNavigationItem>
 
+        { /* temporary file: to test login screen and the connection with server
+        can be deleted after test is accomplished */ }
+        <TabNavigationItem 
+          id="login"
+          renderIcon={isSelected => this._renderIonicons('ios-build', isSelected)}>
+            <StackNavigation initialRoute={Router.getRoute('Login')}/>
+        </TabNavigationItem>
+
       </TabNavigation>
     );
   }
