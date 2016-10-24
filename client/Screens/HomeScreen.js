@@ -65,7 +65,7 @@ export default class HomeScreen extends React.Component {
           source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
           style={{width: 100, height: 40, marginLeft: 125, marginTop: 30}} 
           />
-        <Text style={styles.textB}>Your Groups</Text>
+        <Text style={styles.textB}>Your Jams</Text>
         <ScrollView style={styles.container}>
          <ListView
           dataSource={this.state.dataSource}

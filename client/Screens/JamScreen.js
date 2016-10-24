@@ -1,6 +1,6 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
-import { Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 
 export default class DiscoverScreen extends Component {
   constructor() {
