@@ -16,7 +16,7 @@ var User = require('../server/userdb');
 // NOTE: these tests are designed for mongo!
 /////////////////////////////////////////////////////
 
-describe('', function() {
+describe('server and api calls', function() {
 
   beforeEach(function(done) {
     // Delete objects from db so they can be created later for the test
@@ -26,7 +26,8 @@ describe('', function() {
       .get('/logout')
       .end(function(err, res) {
         // Delete objects from db so they can be created later for the test
-        User.remove({username: 'Savannah'}).exec();
+
+        User.remove({username: 'Svnh'}).exec();
         User.remove({username: 'Phillip'}).exec();
         done();
       });
