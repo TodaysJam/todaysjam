@@ -7,7 +7,8 @@ export default class LoginScreen extends React.Component {
     super();
     this.state = {
       Username: '',
-      Password: ''
+      Password: '',
+      id: ''
     };
   }
   render() {
