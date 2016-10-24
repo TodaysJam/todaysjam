@@ -2,6 +2,7 @@ import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 
+
 export default class LoginScreen extends Component {
   constructor() {
     super();
@@ -31,13 +32,20 @@ export default class LoginScreen extends Component {
 
   // console.logs will show up in your exponent desk app
   signupPressHandler() {
+    var signupPage = require('./SignUpScreen.js');
     console.log('wireddddd');
+    this.props.navigator.push({
+      title: 'SignUpPage',
+      component: signupPage,
+      navigationBarHidden: true,
+      passProps: {myElement: 'text'}
+    });
   }
 
   render() {
     return (
-      <View>
-        <Text>Login and Jam Out!</Text>
+      <View style={styles.view}>
+        <Text style={styles.title}>Login and Jam Out!</Text>
         <TextInput
           style={styles.input}
           onChangeText={(text) => this.setState({Username: text})}
@@ -50,14 +58,16 @@ export default class LoginScreen extends Component {
         />
         <TouchableOpacity
           onPress={this.loginPressHandler}
+          style={styles.button}
         >
-          <Text>Login</Text>
+          <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <View>
           <TouchableOpacity 
             onPress={this.signupPressHandler}
+            style={styles.button}
           >
-            <Text> Don't have an Account?</Text>
+            <Text style={styles.buttonText}> Don't have an Account?</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -66,9 +76,29 @@ export default class LoginScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  title: {
+    fontSize: 24
+  },
   input: {
-    height: 40,
+    fontSize: 36,
+    height: 48,
+    textAlign: 'center',
+    marginHorizontal: 10,
     borderColor: 'gray',
-    borderWidth: 1
+    borderWidth: 1,
+    alignItems: 'center'
+  },
+  button: {
+    height: 24,
+    margin: 3
+  },
+  buttonText: {
+    fontSize: 20
   }
 });
