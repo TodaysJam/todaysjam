@@ -7,9 +7,9 @@ var JamSchema = new mongoose.Schema({
   public: {type: Boolean, default: true},
   score: Number,
   lastCheckin: Date,
-  user: [{ type: mongoose.Schema.ObjectId, ref: 'users' }]
+  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }]
 })
 
 var Jam = mongoose.model('jams', JamSchema);
 
-module.exports = Jam;s
+module.exports = Jam;

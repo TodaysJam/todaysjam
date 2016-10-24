@@ -6,7 +6,7 @@
   "private": true,
   "main": "index.ios.js",
   "scripts": {
-    "test": "mocha --bail --reporter nyan spec/*.js; sudo pkill -n node;",
+    "test": "mocha --bail --reporter nyan spec/*.js;",
     "run": "node server/server.js"
   },
   "dependencies": {
