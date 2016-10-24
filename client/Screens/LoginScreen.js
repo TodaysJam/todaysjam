@@ -10,6 +10,30 @@ export default class LoginScreen extends Component {
       Password: ''
     };
   }
+
+  loginPressHandler() {
+    // AJAX request to http://server_ip/api/users/login
+    fetch('http://server_ip/api/users/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.Username,
+        password: this.state.Password
+      })
+    })
+    .then((res) => {
+
+    });
+  }
+
+  // console.logs will show up in your exponent desk app
+  signupPressHandler() {
+    console.log('wireddddd');
+  }
+
   render() {
     return (
       <View>
@@ -24,11 +48,15 @@ export default class LoginScreen extends Component {
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
         />
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={this.loginPressHandler}
+        >
           <Text>Login</Text>
         </TouchableOpacity>
         <View>
-          <TouchableOpacity>
+          <TouchableOpacity 
+            onPress={this.signupPressHandler}
+          >
             <Text> Don't have an Account?</Text>
           </TouchableOpacity>
         </View>
