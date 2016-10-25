@@ -30,13 +30,6 @@ export default class LoginScreen extends Component {
     });
   }
 
-  // console.logs will show up in your exponent desk app
-  // signupPressHandler() {
-  //   console.log('wireddddd');
-  //   this.props.navigator.push(signupPage);
-  //   this.props.navigator.push(Router.getRoute('login'))
-  // }
-
   render() {
     return (
       <View style={styles.view}>

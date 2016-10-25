@@ -13,6 +13,24 @@ export default class SignUpScreen extends Component {
     };
   }
 
+  signupPressHandler() {
+    // AJAX request to http://server_ip/api/users/signup
+    fetch('http://server_ip/api/users/signup', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.Username,
+        password: this.state.Password
+      })
+    })
+    .then((res) => {
+
+    });
+  }
+
   render() {
     return (
       <View style={styles.view}>
@@ -28,6 +46,7 @@ export default class SignUpScreen extends Component {
           value={this.state.Password}
         />
         <TouchableOpacity
+          onPress={this.signupPressHandler}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
