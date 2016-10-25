@@ -9,7 +9,8 @@ export default class SignUpScreen extends Component {
     this.state = {
       Username: '',
       Password: '',
-      id: ''
+      id: '',
+      errBoxInit: false // this is to hide the hidden view when app first renders
     };
   }
 
@@ -34,13 +35,19 @@ export default class SignUpScreen extends Component {
         // on successful account creation redirect user to login page
         this.props.navigator.push(Router.getRoute('Login'));
       } else if (res.status !== 200) {
-        console.error('username already exists');
+        // console.error('username already exists');
+        // if res.status is no good (i.e. 404) then review the hidden view
+        this.setState({errBoxInit: true});
       }
     });
   }
 
   render() {
+    // this is the hiddenText that will display if the hidden view is revealed due to ajax call receiving bad response
+    var hiddenText = this.state.errBoxInit ? "Username Already Exists" : "";
+
     return (
+
       <View style={styles.view}>
         <Text style={styles.title}>SignUp and Jam Out!</Text>
         <TextInput
@@ -68,6 +75,10 @@ export default class SignUpScreen extends Component {
           >
             <Text style={styles.buttonText}> Already have an Account?</Text>
           </TouchableOpacity>
+        </View>
+      {/* Hidden error message box for when username is not available */}
+        <View style={styles.errorMessageBox}>
+          <Text style={styles.errorMessageBoxText}>{hiddenText}</Text>
         </View>
       </View>
     );
@@ -99,5 +110,14 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20
+  },
+  errorMessageBox: {
+    alignItems: 'center',
+    marginTop: 25
+  },
+  errorMessageBoxText: {
+    color: 'red',
+    textAlign: 'center',
+    fontSize: 10
   }
 });
