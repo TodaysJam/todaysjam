@@ -15,7 +15,7 @@ import {
 } from '@exponent/ex-navigation';
 import Router from './Router';
 import Colors from '../../Constants/Colors';
-import { Entypo, Ionicons } from '@exponent/vector-icons';
+import { Entypo, Ionicons, Octicons } from '@exponent/vector-icons';
 
 //navigation bar
   //the items are the individual tabs that lead to screens
@@ -44,6 +44,12 @@ export default class RootNavigation extends Component {
             <StackNavigation initialRoute={Router.getRoute('jams')}/>
         </TabNavigationItem>
 
+        <TabNavigationItem 
+          id="signout"
+          renderIcon={isSelected => this._renderOcticons('log-out', isSelected)}>
+            <StackNavigation initialRoute={Router.getRoute('SignOut')}/>
+        </TabNavigationItem>
+
       </TabNavigation>
     );
   }
@@ -67,7 +73,18 @@ export default class RootNavigation extends Component {
       />
     );
   }
-}
+
+  //renders Icon from Octicons Library based on name from Exponent
+  _renderOcticons(name, isSelected) {
+    return (
+      <Octicons 
+        name={name}
+        size={32}
+        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
+      />
+    );
+  }
+} //end exports default 
 
 const styles = StyleSheet.create({
   container: {
