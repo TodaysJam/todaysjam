@@ -8,11 +8,28 @@ export default class SignOutScreen extends Component {
     super();
   }
 
+  logOutPressHandler() {
+    console.log('wired');
+  }
+
   render() {
     return (
-      <View>
-        <Text>TESTING</Text>
+      <View style={styles.view}>
+        <TouchableOpacity
+          onPress={this.logOutPressHandler.bind(this)}
+        >
+          <Text>TESTING</Text>
+        </TouchableOpacity>
       </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  view: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
