@@ -12,63 +12,80 @@ export default class DiscoverScreen extends Component {
   }
   render() {
     return (
-      <View style={styles.container}>
+      <View>
         <Image 
           source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-          style={{width: 100, height: 40, marginLeft: 125, marginTop: 30}} 
-          />
+          style={styles.image} 
+        />
+        <View style={styles.formContainer}>
           <View style={styles.formy}>
             <Text style={styles.textB}>Create your Jam!</Text>
             <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+              style={styles.textInputDescription}
               placeholder='Jam Description'
               onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
-              value={this.state.text1}
+              value={this.state.jamDescription}
             />
             <TextInput
-              style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-              placeholder='Jam Description'
+              style={styles.textInputName}
+              placeholder='Jam Name'
               onChangeText={(jamName) => this.setState({jamName: jamName})}
-              value={this.state.text}
+              value={this.state.jamName}
             />
           </View>
-        <TouchableOpacity style={styles.addBordy}>
-          <Text style={styles.textS}>Submit</Text>
-        </TouchableOpacity>
+          <TouchableOpacity style={styles.button}>
+            <Text style={styles.buttonText}>Submit</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  formContainer: {
     flex: 1,
     backgroundColor: '#fff',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  text: {
-    fontSize: 16
+  image: {
+    width: 100,
+    height: 40,
+    marginLeft: 110,
+    marginTop: 30
+  },
+  textInputDescription: {
+    height: 240, 
+    marginHorizontal: -65,
+    borderColor: 'gray', 
+    borderWidth: 1
+  },
+  textInputName: {
+    height: 40, 
+    marginHorizontal: -65,
+    borderColor: 'gray', 
+    borderWidth: 1
   },
   textB: {
     fontSize: 20,
     fontWeight: 'bold'
   },
-  textS: {
-    fontSize: 12,
+  buttonText: {
+    fontSize: 18,
     fontWeight: 'bold',
+    paddingTop: 3,
     textAlign: 'center'
   },
-  bordy: {
-    borderWidth: 1,
-    borderRadius: 10,
-    height: 60,
-  },
-  addBordy: {
-    marginBottom: 10,
+  button: {
     borderWidth: 2,
     borderRadius: 5,
-    width: 60,
+    width: 90,
+    height: 36,
+    margin: 3
   },
   formy: {
-    marginTop: 80
+    marginTop: 45
   }
 });
