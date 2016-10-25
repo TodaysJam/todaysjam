@@ -1,7 +1,7 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
-
+import Router from '../Navigation/Router';
 
 export default class LoginScreen extends Component {
   constructor() {
@@ -31,9 +31,11 @@ export default class LoginScreen extends Component {
   }
 
   // console.logs will show up in your exponent desk app
-  signupPressHandler() {
-    console.log('wireddddd');
-  }
+  // signupPressHandler() {
+  //   console.log('wireddddd');
+  //   this.props.navigator.push(signupPage);
+  //   this.props.navigator.push(Router.getRoute('login'))
+  // }
 
   render() {
     return (
@@ -44,7 +46,7 @@ export default class LoginScreen extends Component {
           onChangeText={(text) => this.setState({Username: text})}
           value={this.state.Username}
         />
-        <TextInput
+        <TextInput 
           style={styles.input}
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
@@ -57,7 +59,9 @@ export default class LoginScreen extends Component {
         </TouchableOpacity>
         <View>
           <TouchableOpacity 
-            onPress={this.signupPressHandler}
+            onPress={() => {
+              this.props.navigator.push(Router.getRoute('SignUp'));
+            }}
             style={styles.button}
           >
             <Text style={styles.buttonText}> Don't have an Account?</Text>
