@@ -15,7 +15,9 @@ export default class SignUpScreen extends Component {
 
   signupPressHandler() {
     // AJAX request to http://server_ip/api/users/signup
-    fetch('http://server_ip/api/users/signup', {
+    console.log('username: ', this.state.Username);
+    console.log('password: ', this.state.Password);
+    fetch('https://todaysjam.herokuapp.com/api/users/signup', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -21,7 +21,8 @@ import Router from './client/Navigation/Router';
 export class App extends React.Component {
  
   render() {
-    let initialRoute = Router.getRoute('rootNavigation');
+    // this sets the initial screen when accessing the app (without a session)
+    let initialRoute = Router.getRoute('Login');
     return (
       <View style={styles.container}>
         <NavigationProvider router={Router}>

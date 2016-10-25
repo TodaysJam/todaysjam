@@ -14,7 +14,9 @@ export default class LoginScreen extends Component {
 
   loginPressHandler() {
     // AJAX request to http://server_ip/api/users/login
-    fetch('http://server_ip/api/users/login', {
+    console.log('username: ', this.state.Username);
+    console.log('password: ', this.state.Password);
+    fetch('https://todaysjam.herokuapp.com/api/users/login', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -26,7 +28,17 @@ export default class LoginScreen extends Component {
       })
     })
     .then((res) => {
-
+      console.log(res);
+      if (res.status === 200) {
+        //redirect into index, --> do something within session/token
+        this.props.navigator.push(Router.getRoute('rootNavigation'));
+      } else if (res.status === 404) {
+        // username doesn't exist
+        console.log('incorect information');
+      } else if (res.status === 409) {
+        // incorrect password
+        console.log('incorect information');
+      }
     });
   }
 
@@ -36,7 +48,9 @@ export default class LoginScreen extends Component {
         <Text style={styles.title}>Login and Jam Out!</Text>
         <TextInput
           style={styles.input}
-          onChangeText={(text) => this.setState({Username: text})}
+          onChangeText={(text) => {
+            this.setState({Username: text}); 
+          }}
           value={this.state.Username}
         />
         <TextInput 
@@ -45,13 +59,15 @@ export default class LoginScreen extends Component {
           value={this.state.Password}
         />
         <TouchableOpacity
-          onPress={this.loginPressHandler}
+          onPress={this.loginPressHandler.bind(this)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <View>
-          <TouchableOpacity 
+          <TouchableOpacity
+          //the navigator of the react native works like a stack
+          //by pushing in a route, the view will switch to that page
             onPress={() => {
               this.props.navigator.push(Router.getRoute('SignUp'));
             }}
