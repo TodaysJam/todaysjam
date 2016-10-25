@@ -29,7 +29,13 @@ export default class SignUpScreen extends Component {
       })
     })
     .then((res) => {
-
+      if (res.status === 200) {
+        console.log('account successfully created');
+        // on successful account creation redirect user to login page
+        this.props.navigator.push(Router.getRoute('Login'));
+      } else if (res.status !== 200) {
+        console.error('username already exists');
+      }
     });
   }
 
@@ -48,7 +54,7 @@ export default class SignUpScreen extends Component {
           value={this.state.Password}
         />
         <TouchableOpacity
-          onPress={this.signupPressHandler}
+          onPress={this.signupPressHandler.bind(this)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
