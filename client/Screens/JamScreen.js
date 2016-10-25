@@ -6,8 +6,8 @@ export default class DiscoverScreen extends Component {
   constructor() {
     super();
     this.state = {
-      text: 'Jam Name',
-      text1: 'Jam Description'
+      jamName: '',
+      jamDescription: ''
     };
   }
   render() {
@@ -21,12 +21,14 @@ export default class DiscoverScreen extends Component {
             <Text style={styles.textB}>Create your Jam!</Text>
             <TextInput
               style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(text1) => this.setState({text1: text1})}
+              placeholder='Jam Description'
+              onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
               value={this.state.text1}
             />
             <TextInput
               style={{height: 40, borderColor: 'gray', borderWidth: 1}}
-              onChangeText={(text) => this.setState({text: text})}
+              placeholder='Jam Description'
+              onChangeText={(jamName) => this.setState({jamName: jamName})}
               value={this.state.text}
             />
           </View>
