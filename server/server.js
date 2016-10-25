@@ -9,7 +9,8 @@ var mongoose = require('mongoose');
 ///SERVER AND DATABASE SETUPS
 var app = express();
 var port = 3000;
-mongoose.connect('mongodb://localhost/jam');
+// mongoose.connect('mongodb://localhost/jam');
+mongoose.connect('mongodb://todaysjam:hr48@ds031617.mlab.com:31617/jamz');
 
 
 var db = mongoose.connection;
