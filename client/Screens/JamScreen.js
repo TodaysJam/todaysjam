@@ -10,6 +10,42 @@ export default class DiscoverScreen extends Component {
       jamDescription: ''
     };
   }
+
+  createPressHandler() {
+    console.log(this.state.jamName);
+    console.log(this.state.jamDescription);
+    fetch('https://todaysjam.herokuapp.com/api/users/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.state.jamName,
+        description: this.state.jamDescription,
+        public: true,
+        score: 0,
+        user: [{}]
+      })
+    })
+    .then((res) => {
+      //if(res.status === 200)
+        //add a message
+      //if(res.status === xxx)
+        //if something wrong happen in the database
+        //post a error message
+    });
+  }
+
+  /* information needed to 
+  name: String,
+  description: String,
+  public: {type: Boolean, default: true},
+  score: Number,
+  lastCheckin: Date,
+  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }]
+  */
+
   render() {
     return (
       <View>
@@ -33,7 +69,10 @@ export default class DiscoverScreen extends Component {
               value={this.state.jamName}
             />
           </View>
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity
+            onPress={this.createPressHandler.bind(this)}
+            style={styles.button}
+          >
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
         </View>
