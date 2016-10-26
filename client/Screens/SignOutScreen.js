@@ -10,6 +10,8 @@ export default class SignOutScreen extends Component {
 
   logOutPressHandler() {
     console.log('wired');
+    // not redirecting correctly
+    this.props.navigator.replace(Router.getRoute('Login'));
   }
 
   render() {
@@ -17,8 +19,9 @@ export default class SignOutScreen extends Component {
       <View style={styles.view}>
         <TouchableOpacity
           onPress={this.logOutPressHandler.bind(this)}
+          style = {styles.button}
         >
-          <Text>TESTING</Text>
+          <Text style={styles.buttonText}>Sign Out</Text>
         </TouchableOpacity>
       </View>
     )
@@ -31,5 +34,17 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  button: {
+    borderColor: 'gray',
+    borderWidth: 5,
+    borderRadius: 10,
+    height: 60,
+    width: 200,
+    paddingTop: 5
+  },
+  buttonText: {
+    fontSize: 30,
+    textAlign: 'center',
   }
 });
