@@ -28,7 +28,6 @@ app.post('/api/users/signup', handler.signupUser);
 
 app.get('/api/jams', handler.fetchJams);
 
-
 app.get('/api/logout', function() {return true;});
 
 

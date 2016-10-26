@@ -89,6 +89,7 @@ exports.checkinToJam = function (req, res) {
   });
 };
 
+
 exports.createJam = function (req, res) {
   var newJam = new Jam({
     name: req.body.name,

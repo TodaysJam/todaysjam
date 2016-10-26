@@ -23,13 +23,6 @@ export default class DiscoverScreen extends React.Component {
         }])
     };
   }
-// 
-  // getInitialState () {
-  //   var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-  //   return {
-  //     dataSource: ds.cloneWithRows(this._getRows({})),
-  //   };
-  // }
 
   render() {
     return (
@@ -48,14 +41,13 @@ export default class DiscoverScreen extends React.Component {
           renderRow={(rowData, i) => (
           /* Need to figure out how to map touchable elements */
             <View key={i} style={styles.bordy}>
-            {console.log('rowdata', rowData)}
               <Text style={styles.text} >Jam Name: {rowData.name}</Text>
               <View style={styles.horiContainer}>
                 <Text style={styles.text} >Description: {rowData.description}</Text>
                 <Text style={styles.text} >Score: {rowData.score}</Text>
               </View>
               <TouchableOpacity style={styles.addBordy}>
-                <Text style={styles.textS}>Add me to Your Jamz!</Text>
+                <Text style={styles.textS} onPress={this.addJamPressHandler.bind(rowData)}>Add me to Your Jamz!</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -78,7 +70,10 @@ export default class DiscoverScreen extends React.Component {
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
     })
   }
+
 }
+
+
 
 
 const styles = StyleSheet.create({
