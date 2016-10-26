@@ -70,6 +70,7 @@ export default class DiscoverScreen extends React.Component {
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
     })
   }
+
 }
 
 
