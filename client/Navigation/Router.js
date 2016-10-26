@@ -8,6 +8,7 @@ import DiscoverScreen from '../Screens/DiscoverScreen.js';
 import JamScreen from '../Screens/JamScreen.js';
 import LoginScreen from '../Screens/LoginScreen.js';
 import SignUpScreen from '../Screens/SignUpScreen.js';
+import SignOutScreen from '../Screens/SignOutScreen.js';
 
 export default createRouter(() => ({
   home: () => HomeScreen,
@@ -15,5 +16,6 @@ export default createRouter(() => ({
   jams: () => JamScreen,
   rootNavigation: () => RootNavigation,
   Login: () => LoginScreen,
-  SignUp: () => SignUpScreen
+  SignUp: () => SignUpScreen,
+  SignOut: () => SignOutScreen
 }));
