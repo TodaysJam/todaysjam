@@ -57,16 +57,16 @@ export default class DiscoverScreen extends Component {
           <View style={styles.formy}>
             <Text style={styles.textB}>Create your Jam!</Text>
             <TextInput
-              style={styles.textInputDescription}
-              placeholder='Jam Description'
-              onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
-              value={this.state.jamDescription}
-            />
-            <TextInput
               style={styles.textInputName}
               placeholder='Jam Name'
               onChangeText={(jamName) => this.setState({jamName: jamName})}
               value={this.state.jamName}
+            />
+            <TextInput
+              style={styles.textInputDescription}
+              placeholder='Jam Description'
+              onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
+              value={this.state.jamDescription}
             />
           </View>
           <TouchableOpacity
