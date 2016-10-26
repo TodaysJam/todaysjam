@@ -15,7 +15,7 @@ exports.loginUser = function (req, res) {
     } else {
       bcrypt.compare(req.body.password, user.password, function (err, match){
         if (match) {
-          res.status(200).send(user);
+          res.status(200).send(match);
         } else {
           res.status(409).send('password doesn\'t match');
         }
@@ -104,7 +104,7 @@ exports.createJam = function (req, res) {
     public: req.body.public,
     score: 0,
     lastCheckin: undefined,
-    userId: req.body.userId
+    user: req.body.userId
   })
   newJam.save(function(err, savedJam) {
     if (err) {
