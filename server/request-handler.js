@@ -15,7 +15,7 @@ exports.loginUser = function (req, res) {
     } else {
       bcrypt.compare(req.body.password, user.password, function (err, match){
         if (match) {
-          res.status(200).send(match);
+          res.status(200).send(user);
         } else {
           res.status(409).send('password doesn\'t match');
         }
@@ -89,6 +89,14 @@ exports.checkinToJam = function (req, res) {
   });
 };
 
+// example call object: {
+//   "name": "nameofJam",
+//   "description": "descriptionofJam",
+//   "public": "true",
+//   "score": 0,
+//   "lastCheckin": "undefined",
+//   "userId": "5810fc2412927b26b437049a" 
+// }
 exports.createJam = function (req, res) {
   var newJam = new Jam({
     name: req.body.name,
