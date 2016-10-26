@@ -70,7 +70,28 @@ export default class DiscoverScreen extends React.Component {
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
     })
   }
-
+  addJamPressHandler () {
+    fetch('https://todaysjam.herokuapp.com/api/jams/create', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.name,
+        description: this.description,
+        public: true,
+        score: 0,
+        lastCheckin: undefined,
+        userId: global._globalUserId
+      })
+    })
+    .then((res) =>  {
+      console.log(global._globalUserId)
+      View.hide = true;
+      console.log(res);
+    })
+  }
 }
 
 
