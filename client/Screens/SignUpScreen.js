@@ -9,15 +9,12 @@ export default class SignUpScreen extends Component {
     this.state = {
       Username: '',
       Password: '',
-      id: '',
       errBoxInit: false // this is to hide the hidden view when app first renders
     };
   }
 
   signupPressHandler() {
     // AJAX request to http://server_ip/api/users/signup
-    console.log('username: ', this.state.Username);
-    console.log('password: ', this.state.Password);
     fetch('https://todaysjam.herokuapp.com/api/users/signup', {
       method: 'POST',
       headers: {
@@ -31,6 +28,8 @@ export default class SignUpScreen extends Component {
     })
     .then((res) => {
       if (res.status === 200) {
+        global._globalUsername = this.state.Username;
+        console.log(global._globalUsername)
         console.log('account successfully created');
         // on successful account creation redirect user to login page
         this.props.navigator.push(Router.getRoute('Login'));

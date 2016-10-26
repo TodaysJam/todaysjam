@@ -28,6 +28,8 @@ export default class LoginScreen extends Component {
     .then((res) => {
       if (res.status === 200) {
         //redirect into index, --> do something within session/token
+        global._globalUsername = this.state.Username
+        console.log(global._globalUsername)
         this.props.navigator.push(Router.getRoute('rootNavigation'));
       } else if (res.status === 404) {
         // username doesn't exist
