@@ -14,7 +14,7 @@ export default class DiscoverScreen extends Component {
   createPressHandler() {
     console.log(this.state.jamName);
     console.log(this.state.jamDescription);
-    fetch('https://todaysjam.herokuapp.com/api/users/login', {
+    fetch('https://todaysjam.herokuapp.com/api/jams/create', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -24,16 +24,21 @@ export default class DiscoverScreen extends Component {
         name: this.state.jamName,
         description: this.state.jamDescription,
         public: true,
-        //ToDo: need a team discussion on how to store the ObjectId of the user
-        // user: [{}]
+        userId: global._globalUserId
       })
     })
     .then((res) => {
-      //if(res.status === 200)
+      console.log(res);
+      if(res.status === 200) {
+        console.log('savedJam', res);
+      }
         //add a message
       //if(res.status === xxx)
         //if something wrong happen in the database
         //post a error message
+    })
+    .catch((err) => {
+      console.log('error message: ', err);
     });
   }
 
