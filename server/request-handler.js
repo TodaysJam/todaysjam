@@ -101,7 +101,7 @@ exports.checkinToJam = function (req, res) {
 exports.createJam = function (req, res) {
   var newJam = new Jam({
     name: req.body.name,
-    description: req.body.description,s
+    description: req.body.description,
     public: req.body.public,
     score: 0,
     lastCheckin: undefined,
