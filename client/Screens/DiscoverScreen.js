@@ -87,9 +87,8 @@ export default class DiscoverScreen extends React.Component {
       })
     })
     .then((res) =>  {
-      console.log(global._globalUserId)
+      //TODO: remove the div after it is clicked
       View.hide = true;
-      console.log(res);
     })
   }
 }
