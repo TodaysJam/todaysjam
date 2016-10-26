@@ -57,18 +57,16 @@ export default class DiscoverScreen extends Component {
           <View style={styles.formy}>
             <Text style={styles.textB}>Create your Jam!</Text>
             <TextInput
-              style={styles.textInputName}
-              placeholder='Jam Name'
-              autoFocus={true}
-              onChangeText={(jamName) => this.setState({jamName: jamName})}
-              value={this.state.jamName}
-            />
-            <TextInput
               style={styles.textInputDescription}
               placeholder='Jam Description'
-              autoFocus={true}
               onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
               value={this.state.jamDescription}
+            />
+            <TextInput
+              style={styles.textInputName}
+              placeholder='Jam Name'
+              onChangeText={(jamName) => this.setState({jamName: jamName})}
+              value={this.state.jamName}
             />
           </View>
           <TouchableOpacity
@@ -88,8 +86,8 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   image: {
     width: 100,
@@ -99,19 +97,20 @@ const styles = StyleSheet.create({
   },
   textInputDescription: {
     height: 240, 
-    marginHorizontal: -65,
+    marginHorizontal: 15,
     borderColor: 'gray', 
     borderWidth: 1
   },
   textInputName: {
     height: 40, 
-    marginHorizontal: -65,
+    marginHorizontal: 15,
     borderColor: 'gray', 
     borderWidth: 1
   },
   textB: {
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   buttonText: {
     fontSize: 18,
@@ -122,9 +121,10 @@ const styles = StyleSheet.create({
   button: {
     borderWidth: 2,
     borderRadius: 5,
-    width: 90,
+    // width: 90,
     height: 36,
-    margin: 3
+    margin: 3,
+    marginHorizontal: 120
   },
   formy: {
     marginTop: 45
