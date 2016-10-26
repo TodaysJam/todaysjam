@@ -14,6 +14,7 @@ export default class LoginScreen extends Component {
 
   loginPressHandler() {
     // AJAX request to http://server_ip/api/users/login
+    //'http://localhost:3000/api/users/login'
     fetch('https://todaysjam.herokuapp.com/api/users/login', {
       method: 'POST',
       headers: {
@@ -28,8 +29,8 @@ export default class LoginScreen extends Component {
     .then((res) => {
       if (res.status === 200) {
         //redirect into index, --> do something within session/token
+        global._globalUserId = JSON.parse(res._bodyInit)._id;
         global._globalUsername = this.state.Username
-        console.log(global._globalUsername)
         this.props.navigator.push(Router.getRoute('rootNavigation'));
       } else if (res.status === 404) {
         // username doesn't exist
@@ -38,6 +39,9 @@ export default class LoginScreen extends Component {
         // incorrect password
         console.log('incorect information');
       }
+    })
+    .catch((err) => {
+      console.log('error message: ', err);
     });
   }
 
