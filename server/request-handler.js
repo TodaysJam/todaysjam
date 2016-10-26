@@ -39,7 +39,6 @@ exports.signupUser = function (req, res) {
           console.error(err);
           res.status(500).send(err);
         } else {
-          console.log()
           res.status(200).send(user);
         }
       });

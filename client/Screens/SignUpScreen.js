@@ -28,8 +28,8 @@ export default class SignUpScreen extends Component {
     })
     .then((res) => {
       if (res.status === 200) {
-        global._globalUsername = this.state.Username;
-        console.log(global._globalUsername)
+        global._globalUserId = JSON.parse(res._bodyInit)._id;
+        global._globalUsername = JSON.parse(res._bodyInit).username;
         console.log('account successfully created');
         // on successful account creation redirect user to login page
         this.props.navigator.push(Router.getRoute('Login'));
