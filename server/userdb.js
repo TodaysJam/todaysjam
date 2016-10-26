@@ -16,7 +16,7 @@ var UserSchema = new mongoose.Schema({
   jams: {} 
 });
 
-//jam object should be {jamObjectID or name : score for jam}
+//jam object should be {name : score for jam}
 
 User = mongoose.model('users', UserSchema);
 

@@ -41,14 +41,13 @@ export default class DiscoverScreen extends React.Component {
           renderRow={(rowData, i) => (
           /* Need to figure out how to map touchable elements */
             <View key={i} style={styles.bordy}>
-            {console.log('rowdata', rowData)}
               <Text style={styles.text} >Jam Name: {rowData.name}</Text>
               <View style={styles.horiContainer}>
                 <Text style={styles.text} >Description: {rowData.description}</Text>
                 <Text style={styles.text} >Score: {rowData.score}</Text>
               </View>
               <TouchableOpacity style={styles.addBordy}>
-                <Text style={styles.textS}>Add me to Your Jamz!</Text>
+                <Text style={styles.textS} onPress={this.addJamPressHandler.bind(rowData)}>Add me to Your Jamz!</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -71,7 +70,31 @@ export default class DiscoverScreen extends React.Component {
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
     })
   }
+
+  addJamPressHandler () {
+    fetch('https://todaysjam.herokuapp.com/api/jams/create', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.name,
+        description: this.description,
+        public: this.public,
+        score: 0,
+        lastCheckin: undefined,
+        user: 'tim'  //global._globalUsername
+      })
+    })
+    .then((res) =>  {
+      View.hide = true;
+      console.log(res);
+    })
+  }
 }
+
+
 
 
 const styles = StyleSheet.create({

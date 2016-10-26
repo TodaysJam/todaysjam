@@ -43,7 +43,7 @@ describe('server and api calls', function() {
         .send({
           'username': 'Svnh',
           'password': 'Svnh' })
-        .expect(200)
+        .expect(201)
         .expect(function() {
           User.findOne({'username': 'Svnh'})
             .exec(function(err, user) {
