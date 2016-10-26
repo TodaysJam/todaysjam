@@ -1,13 +1,15 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
-import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Form, Image, TextInput, View, KeyboardAvoidingView, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 
 export default class DiscoverScreen extends Component {
   constructor() {
     super();
     this.state = {
       jamName: '',
-      jamDescription: ''
+      jamDescription: '',
+      behavior: 'padding',
+      modalOpen: false
     };
   }
 
@@ -28,28 +30,14 @@ export default class DiscoverScreen extends Component {
       })
     })
     .then((res) => {
-      console.log(res);
       if(res.status === 200) {
-        console.log('savedJam', res);
+        console.log('New Jam is successfully created.');''
       }
-        //add a message
-      //if(res.status === xxx)
-        //if something wrong happen in the database
-        //post a error message
     })
     .catch((err) => {
       console.log('error message: ', err);
     });
   }
-
-  /* information needed to 
-  name: String,
-  description: String,
-  public: {type: Boolean, default: true},
-  score: Number,
-  lastCheckin: Date,
-  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }]
-  */
 
   render() {
     return (
@@ -58,20 +46,20 @@ export default class DiscoverScreen extends Component {
           source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
           style={styles.image} 
         />
-        <View style={styles.formContainer}>
+        <KeyboardAvoidingView style={styles.formContainer}>
           <View style={styles.formy}>
             <Text style={styles.textB}>Create your Jam!</Text>
-            <TextInput
-              style={styles.textInputName}
-              placeholder='Jam Name'
-              onChangeText={(jamName) => this.setState({jamName: jamName})}
-              value={this.state.jamName}
-            />
             <TextInput
               style={styles.textInputDescription}
               placeholder='Jam Description'
               onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
               value={this.state.jamDescription}
+            />
+            <TextInput
+              style={styles.textInputName}
+              placeholder='Jam Name'
+              onChangeText={(jamName) => this.setState({jamName: jamName})}
+              value={this.state.jamName}
             />
           </View>
           <TouchableOpacity
@@ -80,7 +68,7 @@ export default class DiscoverScreen extends Component {
           >
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
-        </View>
+        </KeyboardAvoidingView>
       </View>
     );
   }
