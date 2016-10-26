@@ -97,7 +97,6 @@ exports.checkinToJam = function (req, res) {
 //   "lastCheckin": "undefined",
 //   "userId": "5810fc2412927b26b437049a" 
 // }
-
 exports.createJam = function (req, res) {
   var newJam = new Jam({
     name: req.body.name,
