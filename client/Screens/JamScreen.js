@@ -24,13 +24,15 @@ export default class DiscoverScreen extends Component {
         name: this.state.jamName,
         description: this.state.jamDescription,
         public: true,
-        //ToDo: need a team discussion on how to store the ObjectId of the user
-        // user: [{}]
+        userId: global._globalUserId
       })
     })
     .then((res) => {
-      //if(res.status === 200)
+      if(res.status === 200) {
+
+      }
         //add a message
+      }
       //if(res.status === xxx)
         //if something wrong happen in the database
         //post a error message
