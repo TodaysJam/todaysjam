@@ -26,7 +26,7 @@ app.use(parser.urlencoded({ extended: true }));
 app.post('/api/users/login', handler.loginUser);
 app.post('/api/users/signup', handler.signupUser);
 
-// app.get('/api/jams', handler.fetchJams);
+app.get('/api/jams', handler.fetchJams);
 
 
 app.get('/api/logout', function() {return true;});
