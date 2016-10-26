@@ -8,7 +8,8 @@ export default class LoginScreen extends Component {
     super();
     this.state = {
       Username: '',
-      Password: ''
+      Password: '',
+      errBoxInit: false
     };
   }
 
@@ -35,9 +36,11 @@ export default class LoginScreen extends Component {
       } else if (res.status === 404) {
         // username doesn't exist
         console.log('incorect information');
+        this.setState({errBoxInit: true});
       } else if (res.status === 409) {
         // incorrect password
         console.log('incorect information');
+        this.setState({errBoxInit: true});
       }
     })
     .catch((err) => {
@@ -46,6 +49,8 @@ export default class LoginScreen extends Component {
   }
 
   render() {
+    var hiddenText = this.state.errBoxInit ? "Incorrect Password or Username" : "";
+    
     return (
       <View style={styles.view}>
         <Text style={styles.title}>Login and Jam Out!</Text>
@@ -79,6 +84,11 @@ export default class LoginScreen extends Component {
             <Text style={styles.buttonText}> Don't have an Account?</Text>
           </TouchableOpacity>
         </View>
+
+        <View style={styles.errorMessageBox}>
+          <Text style={styles.errorMessageBoxText}>{hiddenText}</Text>
+        </View>
+
       </View>
     );
   }
@@ -109,5 +119,14 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20
+  },
+  errorMessageBox: {
+    alignItems: 'center',
+    marginTop: 25
+  },
+  errorMessageBoxText: {
+    color: 'red',
+    textAlign: 'center',
+    fontSize: 10
   }
 });
