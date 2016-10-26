@@ -23,13 +23,6 @@ export default class DiscoverScreen extends React.Component {
         }])
     };
   }
-// 
-  // getInitialState () {
-  //   var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-  //   return {
-  //     dataSource: ds.cloneWithRows(this._getRows({})),
-  //   };
-  // }
 
   render() {
     return (
