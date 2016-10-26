@@ -15,7 +15,7 @@ exports.loginUser = function (req, res) {
     } else {
       bcrypt.compare(req.body.password, user.password, function (err, match){
         if (match) {
-          res.status(200).send(match);
+          res.status(200).send(user);
         } else {
           res.status(409).send('password doesn\'t match');
         }
@@ -39,6 +39,7 @@ exports.signupUser = function (req, res) {
           console.error(err);
           res.status(500).send(err);
         } else {
+          console.log()
           res.status(200).send(user);
         }
       });
