@@ -14,48 +14,35 @@ export default class HomeScreen extends React.Component {
   constructor() {
     super();
     //generate rows that contain all current jam groups
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows([
+      dataSource: this.ds.cloneWithRows([
         {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
           name: 'name',
           jam: 'jam name',
           description: 'this is a jam description'
         }
       ])
     };
+  }
+  componentWillMount() {
+    var userId = '5809654cefa48c0f3987d116';
+    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + userId, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      console.log('ressssssssssss', res);
+      console.log('response', res._bodyText);
+      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
+    })
+    .catch((err) => {
+      console.log('errorrrr');
+      return console.log(JSON.parse(err));
+    });
   }
   render() {
     return (
