@@ -96,7 +96,7 @@ exports.createJam = function (req, res) {
     public: req.body.public,
     score: 0,
     lastCheckin: undefined,
-    user: req.body.userId
+    user: req.body.username
   })
   newJam.save(function(err, savedJam) {
     if (err) {

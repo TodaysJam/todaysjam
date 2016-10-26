@@ -10,53 +10,27 @@ import {
 } from 'react-native';
 
 //homepage with active groups and find/create button
-export default class HomeScreen extends React.Component { 
+export default class DiscoverScreen extends React.Component { 
   constructor() {
     super();
     //generate rows that contain all current jam groups
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows([
-        {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          points: '0'
-        }
-      ])
+      dataSource:  this.ds.cloneWithRows([{
+          user: 'name',
+          name: 'jam name',
+          score: '0'
+        }])
     };
   }
+// 
+  // getInitialState () {
+  //   var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  //   return {
+  //     dataSource: ds.cloneWithRows(this._getRows({})),
+  //   };
+  // }
+
   render() {
     return (
       //essentially a div element
@@ -74,10 +48,11 @@ export default class HomeScreen extends React.Component {
           renderRow={(rowData, i) => (
           /* Need to figure out how to map touchable elements */
             <View key={i} style={styles.bordy}>
-              <Text style={styles.text} >Name: {rowData.name}</Text>
+            {console.log('rowdata', rowData)}
+              <Text style={styles.text} >Jam Name: {rowData.name}</Text>
               <View style={styles.horiContainer}>
-                <Text style={styles.text} >Jam Name: {rowData.jam}</Text>
-                <Text style={styles.text} >Points: {rowData.points}</Text>
+                <Text style={styles.text} >Description: {rowData.description}</Text>
+                <Text style={styles.text} >Score: {rowData.score}</Text>
               </View>
               <TouchableOpacity style={styles.addBordy}>
                 <Text style={styles.textS}>Add me to Your Jamz!</Text>
@@ -89,7 +64,22 @@ export default class HomeScreen extends React.Component {
       </View>
     );
   }
+
+  componentDidMount() {
+    fetch('https://todaysjam.herokuapp.com/api/jams', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      console.log('response', res._bodyText)
+      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
+    })
+  }
 }
+
 
 const styles = StyleSheet.create({
   container: {

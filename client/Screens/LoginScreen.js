@@ -14,8 +14,6 @@ export default class LoginScreen extends Component {
 
   loginPressHandler() {
     // AJAX request to http://server_ip/api/users/login
-    console.log('username: ', this.state.Username);
-    console.log('password: ', this.state.Password);
     fetch('https://todaysjam.herokuapp.com/api/users/login', {
       method: 'POST',
       headers: {
@@ -28,7 +26,6 @@ export default class LoginScreen extends Component {
       })
     })
     .then((res) => {
-      console.log(res);
       if (res.status === 200) {
         //redirect into index, --> do something within session/token
         this.props.navigator.push(Router.getRoute('rootNavigation'));
