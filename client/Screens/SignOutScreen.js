@@ -8,13 +8,13 @@ export default class SignOutScreen extends Component {
     super();
   }
 
-  logOutPressHandler() {
-    console.log('wired');
+  signOutPressHandler() {
+    console.log('signout wired');
     // not redirecting correctly, it just replaces the screen with the newly routed screen, doesnt actually redirect
     // this.props.navigator.replace(Router.getRoute('Login'));
   }
 
-  goBackPresshandler() {
+  goBackPressHandler() {
     console.log('goback wired');
   }
 
@@ -22,14 +22,14 @@ export default class SignOutScreen extends Component {
     return (
       <View style={styles.view}>
         <TouchableOpacity 
-          onPress={this.goBackPresshandler.bind(this)}
+          onPress={this.goBackPressHandler.bind(this)}
           style = {styles.button}
         >
           <Text style={styles.buttonText}>Go Back</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={this.logOutPressHandler.bind(this)}
+          onPress={this.signOutPressHandler.bind(this)}
           style = {styles.button}
         >
           <Text style={styles.buttonText}>Sign Out</Text>
