@@ -24,8 +24,8 @@ export default class DiscoverScreen extends Component {
         name: this.state.jamName,
         description: this.state.jamDescription,
         public: true,
-        score: 0,
-        user: [{}]
+        //ToDo: need a team discussion on how to store the ObjectId of the user
+        // user: [{}]
       })
     })
     .then((res) => {
@@ -59,12 +59,14 @@ export default class DiscoverScreen extends Component {
             <TextInput
               style={styles.textInputDescription}
               placeholder='Jam Description'
+              autoFocus={true}
               onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
               value={this.state.jamDescription}
             />
             <TextInput
               style={styles.textInputName}
               placeholder='Jam Name'
+              autoFocus={true}
               onChangeText={(jamName) => this.setState({jamName: jamName})}
               value={this.state.jamName}
             />
