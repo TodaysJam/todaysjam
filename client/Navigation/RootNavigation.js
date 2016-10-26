@@ -38,7 +38,7 @@ export default class RootNavigation extends Component {
             <StackNavigation initialRoute={Router.getRoute('home')}/>
         </TabNavigationItem>
 
-        <TabNavigationItem 
+        <TabNavigationItem
           id="jams"
           renderIcon={isSelected => this._renderIonicons('ios-bonfire', isSelected)}>
             <StackNavigation initialRoute={Router.getRoute('jams')}/>
