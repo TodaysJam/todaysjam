@@ -89,15 +89,23 @@ exports.checkinToJam = function (req, res) {
   });
 };
 
+// example call object: {
+//   "name": "nameofJam",
+//   "description": "descriptionofJam",
+//   "public": "true",
+//   "score": 0,
+//   "lastCheckin": "undefined",
+//   "userId": "5810fc2412927b26b437049a" 
+// }
 
 exports.createJam = function (req, res) {
   var newJam = new Jam({
     name: req.body.name,
-    description: req.body.description,
+    description: req.body.description,s
     public: req.body.public,
     score: 0,
     lastCheckin: undefined,
-    user: req.body.username
+    user: req.body.userId
   })
   newJam.save(function(err, savedJam) {
     if (err) {
