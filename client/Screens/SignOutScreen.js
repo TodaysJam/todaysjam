@@ -12,7 +12,7 @@ export default class SignOutScreen extends Component {
   signOutPressHandler() {
     console.log('signout wired');
     // not redirecting correctly, it just replaces the screen with the newly routed screen, doesnt actually redirect
-    // this.props.navigator.push(Router.getRoute('Login'));
+    this.props.navigator.push(Router.getRoute('Login'));
     
     // var routeOfLogin = {
     //   title: 'Login',
@@ -55,7 +55,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#9e34a7'
   },
   button: {
     borderColor: 'gray',
@@ -64,7 +65,8 @@ const styles = StyleSheet.create({
     height: 60,
     width: 200,
     marginTop: 25,
-    paddingTop: 5
+    paddingTop: 5,
+    backgroundColor: '#00b33c'
   },
   buttonText: {
     fontSize: 30,

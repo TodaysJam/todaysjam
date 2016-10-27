@@ -66,9 +66,9 @@ export default class DiscoverScreen extends React.Component {
       }
     })
     .then((res) => {
-      console.log('response', res._bodyText)
+      console.log('response', res._bodyText);
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
-    })
+    });
   }
   addJamPressHandler () {
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
@@ -89,7 +89,7 @@ export default class DiscoverScreen extends React.Component {
     .then((res) =>  {
       //TODO: remove the div after it is clicked
       View.hide = true;
-    })
+    });
   }
 }
 
@@ -99,7 +99,7 @@ export default class DiscoverScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#9e34a7',
   },
   horiContainer: {
     flexDirection: 'column',
@@ -130,6 +130,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 2,
     borderRadius: 5,
-    width: 130
+    width: 130,
+    backgroundColor: '#00b33c'
   }
 });

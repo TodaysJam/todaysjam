@@ -60,11 +60,13 @@ export default class LoginScreen extends Component {
             this.setState({Username: text}); 
           }}
           value={this.state.Username}
+          placeholder='username'
         />
         <TextInput 
           style={styles.input}
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
+          placeholder='password'
         />
         <TouchableOpacity
           onPress={this.loginPressHandler.bind(this)}
@@ -99,25 +101,39 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#9e34a7'
   },
   title: {
-    fontSize: 24
+    fontSize: 24,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   input: {
-    fontSize: 36,
+    fontSize: 16,
     height: 48,
+    width: 200,
     textAlign: 'center',
     marginHorizontal: 10,
-    borderColor: 'gray',
-    borderWidth: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    color: 'white',
+    borderColor: 'white'
   },
   button: {
-    height: 24,
-    margin: 3
+    borderColor: 'gray',
+    borderWidth: 5,
+    borderRadius: 10,
+    height: 70,
+    width: 200,
+    marginTop: 25,
+    paddingTop: 5,
+    backgroundColor: '#00b33c'
   },
   buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
     fontSize: 20
   },
   errorMessageBox: {

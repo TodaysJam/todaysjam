@@ -14,48 +14,34 @@ export default class HomeScreen extends React.Component {
   constructor() {
     super();
     //generate rows that contain all current jam groups
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows([
+      dataSource: this.ds.cloneWithRows([
         {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
           name: 'name',
           jam: 'jam name',
           description: 'this is a jam description'
         }
       ])
     };
+  }
+  componentWillMount() {
+    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      console.log('ressssssssssss', res);
+      console.log('response', res._bodyText);
+      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
+    })
+    .catch((err) => {
+      console.log('errorrrr');
+      return console.log(JSON.parse(err));
+    });
   }
   render() {
     return (
@@ -94,7 +80,7 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#9e34a7',
   },
   textS: {
     fontSize: 12,
@@ -124,6 +110,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 90,
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    backgroundColor: '#00b33c'
   }
 });

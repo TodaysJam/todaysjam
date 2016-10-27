@@ -86,7 +86,7 @@ export default class DiscoverScreen extends Component {
 const styles = StyleSheet.create({
   formContainer: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#9e34a7',
     flexDirection: 'column',
     // justifyContent: 'center',
     // alignItems: 'center',
@@ -126,7 +126,8 @@ const styles = StyleSheet.create({
     // width: 90,
     height: 36,
     margin: 3,
-    marginHorizontal: 120
+    marginHorizontal: 120,
+    backgroundColor: '#00b33c'
   },
   formy: {
     marginTop: 45
