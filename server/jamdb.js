@@ -12,7 +12,6 @@ var JamSchema = new mongoose.Schema({
   lastCheckin: Date,
   user: [
     { 
-      $oid: String,
       type: mongoose.Schema.Types.ObjectId, 
       ref: 'users' 
     }
