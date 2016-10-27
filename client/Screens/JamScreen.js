@@ -1,21 +1,17 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
-import { Form, Image, TextInput, View, KeyboardAvoidingView, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 
 export default class DiscoverScreen extends Component {
   constructor() {
     super();
     this.state = {
       jamName: '',
-      jamDescription: '',
-      behavior: 'padding',
-      modalOpen: false
+      jamDescription: ''
     };
   }
 
   createPressHandler() {
-    console.log(this.state.jamName);
-    console.log(this.state.jamDescription);
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
       method: 'POST',
       headers: {
@@ -31,13 +27,26 @@ export default class DiscoverScreen extends Component {
     })
     .then((res) => {
       if(res.status === 200) {
-        console.log('New Jam is successfully created.');''
+        console.log('New Jam Has Been Saved.');
       }
+        //add a message
+      //if(res.status === xxx)
+        //if something wrong happen in the database
+        //post a error message
     })
     .catch((err) => {
       console.log('error message: ', err);
     });
   }
+
+  /* information needed to 
+  name: String,
+  description: String,
+  public: {type: Boolean, default: true},
+  score: Number,
+  lastCheckin: Date,
+  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'users' }]
+  */
 
   render() {
     return (
@@ -46,20 +55,20 @@ export default class DiscoverScreen extends Component {
           source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
           style={styles.image} 
         />
-        <KeyboardAvoidingView style={styles.formContainer}>
+        <View style={styles.formContainer}>
           <View style={styles.formy}>
             <Text style={styles.textB}>Create your Jam!</Text>
-            <TextInput
-              style={styles.textInputDescription}
-              placeholder='Jam Description'
-              onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
-              value={this.state.jamDescription}
-            />
             <TextInput
               style={styles.textInputName}
               placeholder='Jam Name'
               onChangeText={(jamName) => this.setState({jamName: jamName})}
               value={this.state.jamName}
+            />
+            <TextInput
+              style={styles.textInputDescription}
+              placeholder='Jam Description'
+              onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
+              value={this.state.jamDescription}
             />
           </View>
           <TouchableOpacity
@@ -68,7 +77,7 @@ export default class DiscoverScreen extends Component {
           >
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
-        </KeyboardAvoidingView>
+        </View>
       </View>
     );
   }
