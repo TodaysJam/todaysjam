@@ -32,7 +32,7 @@ app.get('/api/jams', handler.fetchJams);
 app.get('/api/logout', function() {return true;});
 
 
-app.get('/api/users/jams/:userId', handler.fetchUsersJams);
+app.get('/api/users/jams/:*', handler.fetchUsersJams);
 app.post('/api/users/jams/checkin', handler.checkinToJam);
 app.post('/api/jams/create', handler.createJam);
 
