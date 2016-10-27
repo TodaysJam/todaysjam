@@ -53,21 +53,20 @@ export default class HomeScreen extends React.Component {
             style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
             />
         </View>
-        <Text style={styles.textB}>Your Jams</Text>
+        <Text style={styles.headerText}>Your Jams</Text>
         <ScrollView style={styles.container}>
          <ListView
           dataSource={this.state.dataSource}
-          //creates all the group activities dynamically 
+          //creates all the jams dynamically 
           //with input from database
           renderRow={(rowData, i) => (
-          /* Need to figure out how to map touchable elements */
-            <View key={i} style={styles.bordy}>
-              <Text style={styles.text} >Jam Name: {rowData.jam}</Text>
-              <Text style={styles.text} >Points: {rowData.points}</Text>
-              <Text style={styles.text} >Description: {rowData.description}</Text>
+            <View key={i} style={styles.jamView}>
+              <Text style={styles.descriptionText} >Jam Name: {rowData.jam}</Text>
+              <Text style={styles.descriptionText} >Points: {rowData.points}</Text>
+              <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
               <View>
-                <TouchableOpacity style={styles.addBordy}>
-                  <Text style={styles.textS}>Jam Complete</Text>
+                <TouchableOpacity style={styles.jamCheckinButton}>
+                  <Text style={styles.jamCheckinText}>Jam Complete</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -84,22 +83,22 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#9e34a7',
   },
-  textS: {
+  jamCheckinText: {
     fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white'
   },
-  text: {
+  descriptionText: {
     fontSize: 16
   },
-  textB: {
+  headerText: {
     marginLeft: 5,
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white'
   },
-  bordy: {
+  jamView: {
     borderWidth: 1,
     borderRadius: 7,
     height: 110,
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderColor: 'gray'
   },
-  addBordy: {
+  jamCheckinButton: {
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'gray',
