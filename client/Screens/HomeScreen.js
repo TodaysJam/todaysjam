@@ -26,8 +26,7 @@ export default class HomeScreen extends React.Component {
     };
   }
   componentWillMount() {
-    var userId = '5809654cefa48c0f3987d116';
-    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + userId, {
+    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
