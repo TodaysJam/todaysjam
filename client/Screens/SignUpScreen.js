@@ -48,16 +48,24 @@ export default class SignUpScreen extends Component {
     return (
 
       <View style={styles.view}>
+        <View style={styles.header}>
+          <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginLeft: 125, marginTop: 30, marginBottom: 10}} 
+            />
+        </View>
         <Text style={styles.title}>SignUp and Jam Out!</Text>
         <TextInput
           style={styles.input}
           onChangeText={(text) => this.setState({Username: text})}
           value={this.state.Username}
+          placeholder='username'
         />
         <TextInput 
           style={styles.input}
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
+          placeholder='password'
         />
         <TouchableOpacity
           onPress={this.signupPressHandler.bind(this)}
@@ -89,25 +97,40 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: '#9e34a7'
   },
   title: {
-    fontSize: 24
+    fontSize: 24,
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center'
   },
   input: {
-    fontSize: 36,
+    fontSize: 16,
     height: 48,
+    width: 200,
     textAlign: 'center',
     marginHorizontal: 10,
-    borderColor: 'gray',
-    borderWidth: 1,
-    alignItems: 'center'
+    alignItems: 'center',
+    color: 'white',
+    borderColor: 'white'
   },
   button: {
-    height: 24,
-    margin: 3
+    borderColor: 'gray',
+    borderWidth: 5,
+    borderRadius: 10,
+    height: 70,
+    width: 200,
+    marginTop: 25,
+    paddingTop: 5,
+    backgroundColor: '#00b33c',
+    color: 'white',
   },
   buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
     fontSize: 20
   },
   errorMessageBox: {
@@ -118,5 +141,8 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     fontSize: 10
+  },
+  header: {
+    backgroundColor: 'white'
   }
 });

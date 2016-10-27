@@ -14,42 +14,10 @@ export default class HomeScreen extends React.Component {
   constructor() {
     super();
     //generate rows that contain all current jam groups
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+    this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
-      dataSource: ds.cloneWithRows([
+      dataSource: this.ds.cloneWithRows([
         {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
-        }, {
           name: 'name',
           jam: 'jam name',
           description: 'this is a jam description'
@@ -57,14 +25,34 @@ export default class HomeScreen extends React.Component {
       ])
     };
   }
+  componentWillMount() {
+    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      console.log('ressssssssssss', res);
+      console.log('response', res._bodyText);
+      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
+    })
+    .catch((err) => {
+      console.log('errorrrr');
+      return console.log(JSON.parse(err));
+    });
+  }
   render() {
     return (
       //essentially a div element
       <View style={styles.container}>
-        <Image 
-          source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-          style={{width: 100, height: 40, marginLeft: 125, marginTop: 30}} 
-          />
+        <View style={styles.header}>
+          <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            />
+        </View>
         <Text style={styles.textB}>Your Jams</Text>
         <ScrollView style={styles.container}>
          <ListView
@@ -94,36 +82,45 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#9e34a7',
   },
   textS: {
     fontSize: 12,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
   text: {
     fontSize: 16
   },
   textB: {
+    marginLeft: 5,
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   bordy: {
     borderWidth: 1,
     borderRadius: 7,
     height: 110,
-    marginLeft: 2,
-    marginRight: 2,
+    marginLeft: 5,
+    marginRight: 5,
     marginBottom: 2,
     flexDirection: 'column',
     flex: 1,
     backgroundColor: '#fff',
+    borderColor: 'gray'
   },
   addBordy: {
     borderWidth: 2,
     borderRadius: 5,
+    borderColor: 'gray',
     width: 90,
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 10,
+    backgroundColor: '#00b33c',
+  },
+  header: {
+    backgroundColor: 'white'
   }
 });
