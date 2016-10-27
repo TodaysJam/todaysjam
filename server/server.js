@@ -36,9 +36,6 @@ app.get('/api/users/jams/:userId', handler.fetchUsersJams);
 app.post('/api/users/jams/checkin', handler.checkinToJam);
 app.post('/api/jams/create', handler.createJam);
 
-app.get('*', function(req, res) {
-  console.log('wronggggggggggggg oneoeeeeeee', req.uri, req.url);
-});
 app.listen(process.env.PORT || port);
 console.log('server is serving at port: ', process.env.PORT || port);
 
