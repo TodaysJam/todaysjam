@@ -12,8 +12,6 @@ export default class DiscoverScreen extends Component {
   }
 
   createPressHandler() {
-    console.log(this.state.jamName);
-    console.log(this.state.jamDescription);
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
       method: 'POST',
       headers: {
@@ -28,9 +26,8 @@ export default class DiscoverScreen extends Component {
       })
     })
     .then((res) => {
-      console.log(res);
       if(res.status === 200) {
-        console.log('savedJam', res);
+        console.log('New Jam Has Been Saved.');
       }
         //add a message
       //if(res.status === xxx)
