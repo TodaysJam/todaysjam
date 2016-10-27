@@ -60,13 +60,13 @@ export default class LoginScreen extends Component {
             this.setState({Username: text}); 
           }}
           value={this.state.Username}
-          placeholder='username'
+          placeholder='Username'
         />
         <TextInput 
           style={styles.input}
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
-          placeholder='password'
+          placeholder='Password'
         />
         <TouchableOpacity
           onPress={this.loginPressHandler.bind(this)}

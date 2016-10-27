@@ -12,8 +12,6 @@ export default class DiscoverScreen extends Component {
   }
 
   createPressHandler() {
-    console.log(this.state.jamName);
-    console.log(this.state.jamDescription);
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
       method: 'POST',
       headers: {
@@ -28,9 +26,8 @@ export default class DiscoverScreen extends Component {
       })
     })
     .then((res) => {
-      console.log(res);
       if(res.status === 200) {
-        console.log('savedJam', res);
+        console.log('New Jam Has Been Saved.');
       }
         //add a message
       //if(res.status === xxx)
@@ -54,10 +51,12 @@ export default class DiscoverScreen extends Component {
   render() {
     return (
       <View>
-        <Image 
-          source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-          style={styles.image} 
-        />
+        <View style={styles.header}>
+          <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            />
+        </View>
         <View style={styles.formContainer}>
           <View style={styles.formy}>
             <Text style={styles.textB}>Create your Jam!</Text>
@@ -92,7 +91,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#9e34a7',
     flexDirection: 'column',
     // justifyContent: 'center',
-    // alignItems: 'center',
+    alignItems: 'center',
   },
   image: {
     width: 100,
@@ -101,12 +100,15 @@ const styles = StyleSheet.create({
     marginTop: 30
   },
   textInputDescription: {
-    height: 240, 
+    width: 200,
+    height: 40, 
     marginHorizontal: 15,
     borderColor: 'gray', 
-    borderWidth: 1
+    borderWidth: 1,
+    marginBottom: 200
   },
   textInputName: {
+    width: 200,
     height: 40, 
     marginHorizontal: 15,
     borderColor: 'gray', 
@@ -115,24 +117,31 @@ const styles = StyleSheet.create({
   textB: {
     fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
     paddingTop: 3,
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
   button: {
-    borderWidth: 2,
-    borderRadius: 5,
-    // width: 90,
-    height: 36,
-    margin: 3,
-    marginHorizontal: 120,
-    backgroundColor: '#00b33c'
+    borderColor: 'gray',
+    borderWidth: 5,
+    borderRadius: 10,
+    height: 70,
+    width: 200,
+    marginTop: 25,
+    marginBottom: 20,
+    paddingTop: 5,
+    backgroundColor: '#00b33c',
   },
   formy: {
     marginTop: 45
+  },
+  header: {
+    backgroundColor: 'white'
   }
 });

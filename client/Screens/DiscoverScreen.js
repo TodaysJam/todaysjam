@@ -28,10 +28,12 @@ export default class DiscoverScreen extends React.Component {
     return (
       //essentially a div element
       <View style={styles.container}>
-        <Image 
-          source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-          style={{width: 100, height: 40, marginLeft: 125, marginTop: 30}} 
-          />
+        <View style={styles.header}>
+          <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            />
+        </View>
         <Text style={styles.textB}>Global Jamz</Text>
         <ScrollView style={styles.container}>
          <ListView
@@ -47,7 +49,7 @@ export default class DiscoverScreen extends React.Component {
                 <Text style={styles.text} >Score: {rowData.score}</Text>
               </View>
               <TouchableOpacity style={styles.addBordy}>
-                <Text style={styles.textS} onPress={this.addJamPressHandler.bind(rowData)}>Add me to Your Jamz!</Text>
+                <Text style={styles.textS} onPress={this.addJamPressHandler.bind(rowData)}>Add Me to Your Jamz!</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -66,9 +68,9 @@ export default class DiscoverScreen extends React.Component {
       }
     })
     .then((res) => {
-      console.log('response', res._bodyText);
+      console.log('response', res._bodyText)
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
-    });
+    })
   }
   addJamPressHandler () {
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
@@ -89,7 +91,7 @@ export default class DiscoverScreen extends React.Component {
     .then((res) =>  {
       //TODO: remove the div after it is clicked
       View.hide = true;
-    });
+    })
   }
 }
 
@@ -107,8 +109,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   textB: {
+    marginLeft: 5,
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   text: {
     fontSize: 16
@@ -116,21 +120,28 @@ const styles = StyleSheet.create({
   textS: {
     fontSize: 12,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
   bordy: {
     borderWidth: 1,
     borderRadius: 7,
     height: 110,
-    marginLeft: 2,
-    marginRight: 2,
-    marginBottom: 2
+    marginLeft: 5,
+    marginRight: 5,
+    marginBottom: 2,
+    borderColor: 'gray',
+    backgroundColor: '#fff',
   },
   addBordy: {
     marginBottom: 10,
     borderWidth: 2,
     borderRadius: 5,
     width: 130,
-    backgroundColor: '#00b33c'
+    borderColor: 'gray',
+    backgroundColor: '#00b33c',
+  },
+  header: {
+    backgroundColor: 'white'
   }
 });

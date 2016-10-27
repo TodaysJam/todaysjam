@@ -47,10 +47,12 @@ export default class HomeScreen extends React.Component {
     return (
       //essentially a div element
       <View style={styles.container}>
-        <Image 
-          source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-          style={{width: 100, height: 40, marginLeft: 125, marginTop: 30}} 
-          />
+        <View style={styles.header}>
+          <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            />
+        </View>
         <Text style={styles.textB}>Your Jams</Text>
         <ScrollView style={styles.container}>
          <ListView
@@ -85,32 +87,40 @@ const styles = StyleSheet.create({
   textS: {
     fontSize: 12,
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    color: 'white'
   },
   text: {
     fontSize: 16
   },
   textB: {
+    marginLeft: 5,
     fontSize: 20,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: 'white'
   },
   bordy: {
     borderWidth: 1,
     borderRadius: 7,
     height: 110,
-    marginLeft: 2,
-    marginRight: 2,
+    marginLeft: 5,
+    marginRight: 5,
     marginBottom: 2,
     flexDirection: 'column',
     flex: 1,
     backgroundColor: '#fff',
+    borderColor: 'gray'
   },
   addBordy: {
     borderWidth: 2,
     borderRadius: 5,
+    borderColor: 'gray',
     width: 90,
     marginTop: 10,
     marginBottom: 10,
-    backgroundColor: '#00b33c'
+    backgroundColor: '#00b33c',
+  },
+  header: {
+    backgroundColor: 'white'
   }
 });

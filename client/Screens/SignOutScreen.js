@@ -1,6 +1,6 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Router from '../Navigation/Router';
 
 export default class SignOutScreen extends Component {
@@ -12,7 +12,7 @@ export default class SignOutScreen extends Component {
   signOutPressHandler() {
     console.log('signout wired');
     // not redirecting correctly, it just replaces the screen with the newly routed screen, doesnt actually redirect
-    this.props.navigator.push(Router.getRoute('Login'));
+    // this.props.navigator.push(Router.getRoute('Login'));
     
     // var routeOfLogin = {
     //   title: 'Login',
@@ -31,6 +31,10 @@ export default class SignOutScreen extends Component {
   render() {
     return (
       <View style={styles.view}>
+        <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginBottom: 212}} 
+            />
         <TouchableOpacity 
           onPress={this.goBackPressHandler.bind(this)}
           style = {styles.button}
@@ -55,18 +59,18 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#9e34a7'
+    alignItems: 'center'
   },
   button: {
     borderColor: 'gray',
     borderWidth: 5,
     borderRadius: 10,
-    height: 60,
+    height: 70,
     width: 200,
     marginTop: 25,
+    marginBottom: 20,
     paddingTop: 5,
-    backgroundColor: '#00b33c'
+    backgroundColor: '#00b33c',
   },
   buttonText: {
     fontSize: 30,

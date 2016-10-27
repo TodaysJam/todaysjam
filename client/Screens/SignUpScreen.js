@@ -48,6 +48,12 @@ export default class SignUpScreen extends Component {
     return (
 
       <View style={styles.view}>
+        <View style={styles.header}>
+          <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginLeft: 125, marginTop: 30, marginBottom: 10}} 
+            />
+        </View>
         <Text style={styles.title}>SignUp and Jam Out!</Text>
         <TextInput
           style={styles.input}
@@ -118,7 +124,8 @@ const styles = StyleSheet.create({
     width: 200,
     marginTop: 25,
     paddingTop: 5,
-    backgroundColor: '#00b33c'
+    backgroundColor: '#00b33c',
+    color: 'white',
   },
   buttonText: {
     color: 'white',
@@ -134,5 +141,8 @@ const styles = StyleSheet.create({
     color: 'red',
     textAlign: 'center',
     fontSize: 10
+  },
+  header: {
+    backgroundColor: 'white'
   }
 });
