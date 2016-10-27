@@ -19,10 +19,10 @@ exports.loginUser = function (req, res) {
         } else {
           res.status(409).send('password doesn\'t match');
         }
-      }) 
+      });
     }
-  })
-}
+  });
+};
 
 //TODO Add user sessons after successfully creating a user
 exports.signupUser = function (req, res) {
@@ -51,13 +51,15 @@ exports.fetchJams = function (req, res) {
   Jam.find({}).exec(function(err, jams) {
     res.status(200).send(jams);
   });
-}
+};
 
 
 // fetch all jams for the given user
 // requires "username" field with username
 exports.fetchUsersJams = function (req, res) {
-  Jam.find({username: req.body.username}).exec(function(err, jams) {
+  var userId = req.params.userId.slice(1);
+  console.log('req.params*****', userId);
+  Jam.find({user: userId}).exec(function(err, jams) {
     res.status(200).send(jams);
   });
 };

@@ -12,7 +12,7 @@ export default class SignOutScreen extends Component {
   signOutPressHandler() {
     console.log('signout wired');
     // not redirecting correctly, it just replaces the screen with the newly routed screen, doesnt actually redirect
-    // this.props.navigator.push(Router.getRoute('Login'));
+    this.props.navigator.push(Router.getRoute('Login'));
     
     // var routeOfLogin = {
     //   title: 'Login',
