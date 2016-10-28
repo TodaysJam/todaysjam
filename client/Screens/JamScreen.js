@@ -1,6 +1,7 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
 
 export default class DiscoverScreen extends Component {
   constructor() {
@@ -50,12 +51,12 @@ export default class DiscoverScreen extends Component {
 
   render() {
     return (
-      <View>
+      <ScrollView>
         {/* View Image */}
         <View style={styles.header}>
           <Image 
             source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            style={styles.image} 
             />
         </View>
 
@@ -73,8 +74,8 @@ export default class DiscoverScreen extends Component {
               value={this.state.jamName}
             />
 
-            {/* TextInput */}
-            <TextInput
+            {/* AutoGrowingTextInput: allow multiple lines input*/}
+            <AutoGrowingTextInput
               style={styles.textInputDescription}
               placeholder='Jam Description'
               onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
@@ -92,12 +93,22 @@ export default class DiscoverScreen extends Component {
           </TouchableOpacity>
 
         </View>
-      </View> // end view container
+      </ScrollView> // end view container
     );
   } // end render
 } // end exports default
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: 'white'
+  },
+  image: {
+    width: 100,
+    height: 40,
+    marginLeft: 130,
+    marginTop: 30,
+    marginBottom: 10
+  },
   formContainer: {
     flex: 1,
     backgroundColor: '#9e34a7',
@@ -105,55 +116,46 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
     alignItems: 'center',
   },
-  image: {
-    width: 100,
-    height: 40,
-    marginLeft: 110,
-    marginTop: 30
-  },
-  textInputDescription: {
-    width: 200,
-    height: 40, 
-    marginHorizontal: 15,
-    borderColor: 'gray', 
-    borderWidth: 1,
-    marginBottom: 200
-  },
-  textInputName: {
-    width: 200,
-    height: 40, 
-    marginHorizontal: 15,
-    borderColor: 'gray', 
-    borderWidth: 1
+  inputForm: {
+    marginTop: 45
   },
   headerText: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white'
   },
+  textInputName: {
+    fontSize: 18,
+    width: 300,
+    height: 40, 
+    borderColor: 'gray', 
+    borderWidth: 1
+  },
+  textInputDescription: {
+    fontSize: 18,
+    width: 300,
+    height: 40, 
+    borderColor: 'gray', 
+    borderWidth: 1,
+    marginBottom: 200
+  },
+  inputButton: {
+    borderColor: 'gray',
+    borderWidth: 5,
+    borderRadius: 10,
+    height: 48,
+    width: 160,
+    marginTop: 25,
+    marginBottom: 20,
+    paddingTop: 5,
+    backgroundColor: '#00b33c',
+  }, 
   buttonText: {
     fontSize: 18,
     fontWeight: 'bold',
     paddingTop: 3,
     textAlign: 'center',
     color: 'white'
-  },
-  inputButton: {
-    borderColor: 'gray',
-    borderWidth: 5,
-    borderRadius: 10,
-    height: 70,
-    width: 200,
-    marginTop: 25,
-    marginBottom: 20,
-    paddingTop: 5,
-    backgroundColor: '#00b33c',
-  },
-  inputForm: {
-    marginTop: 45
-  },
-  header: {
-    backgroundColor: 'white'
   }
 }); // end styles
