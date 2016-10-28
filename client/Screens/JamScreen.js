@@ -9,7 +9,7 @@ export default class DiscoverScreen extends Component {
       jamName: '',
       jamDescription: ''
     };
-  }
+  } // end constructor
 
   createPressHandler() {
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
@@ -37,7 +37,7 @@ export default class DiscoverScreen extends Component {
     .catch((err) => {
       console.log('error message: ', err);
     });
-  }
+  } // end createPressHandler
 
   /* information needed to 
   name: String,
@@ -82,8 +82,8 @@ export default class DiscoverScreen extends Component {
         </View>
       </View>
     );
-  }
-}
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -144,4 +144,4 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white'
   }
-});
+}); // end styles

@@ -11,7 +11,7 @@ export default class LoginScreen extends Component {
       Password: '',
       errBoxInit: false
     };
-  }
+  } // end constructor
 
   loginPressHandler() {
     // AJAX request to http://server_ip/api/users/login
@@ -46,7 +46,7 @@ export default class LoginScreen extends Component {
     .catch((err) => {
       console.log('error message: ', err);
     });
-  }
+  } // end loginPressHandler
 
   render() {
     var hiddenText = this.state.errBoxInit ? "Incorrect Password or Username" : "";
@@ -93,8 +93,8 @@ export default class LoginScreen extends Component {
 
       </View>
     );
-  }
-}
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   view: {
@@ -145,4 +145,4 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 10
   }
-});
+}); // end styles

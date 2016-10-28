@@ -22,7 +22,50 @@ export default class DiscoverScreen extends React.Component {
           score: '0'
         }])
     };
-  }
+  } // end constructor
+
+  componentWillMount() {
+    fetch('https://todaysjam.herokuapp.com/api/jams', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
+    })
+  } // end componentWillMount
+
+  addJamPressHandler () {
+    fetch('https://todaysjam.herokuapp.com/api/jams/create', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.name,
+        description: this.description,
+        public: true,
+        score: 0,
+        lastCheckin: undefined,
+        userId: global._globalUserId
+      })
+    })
+    .then((res) =>  {
+      var self = this;
+      this.setState({
+        className: 'fading'
+      });
+      setTimeout(function() {
+        self.setState({
+          className: 'none'
+        });
+      }, 1000);
+      console.log(this.state);
+    })
+  } // end addJamPressHandler
 
   render() {
     return (
@@ -57,53 +100,8 @@ export default class DiscoverScreen extends React.Component {
         </ScrollView>
       </View>
     );
-  }
-
-  componentWillMount() {
-    fetch('https://todaysjam.herokuapp.com/api/jams', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    })
-    .then((res) => {
-      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
-    })
-  }
-  addJamPressHandler () {
-    fetch('https://todaysjam.herokuapp.com/api/jams/create', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: this.name,
-        description: this.description,
-        public: true,
-        score: 0,
-        lastCheckin: undefined,
-        userId: global._globalUserId
-      })
-    })
-    .then((res) =>  {
-      var self = this;
-      this.setState({
-        className: 'fading'
-      });
-      setTimeout(function() {
-        self.setState({
-          className: 'none'
-        });
-      }, 1000);
-      console.log(this.state);
-    })
-  }
-}
-
-
-
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   container: {
@@ -156,4 +154,4 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white'
   },
-});
+}); // end styles

@@ -6,7 +6,7 @@ import Router from '../Navigation/Router';
 export default class SignOutScreen extends Component {
   constructor() {
     super();
-  }
+  } // end constructor
 
   // verify if user really wants to log out
   signOutPressHandler() {
@@ -21,12 +21,12 @@ export default class SignOutScreen extends Component {
     // };
     // this.props.navigator.push(Router.goToView(routeOfLogin));
 
-  }
+  } // end signoutPressHandler
 
   // returns users to homepage if logout icon was accidentally clicked, they can also use the navbar this is just a convenience
   goBackPressHandler() {
     console.log('goback wired');
-  }
+  } // end goBackPressHandler
 
   render() {
     return (
@@ -51,8 +51,8 @@ export default class SignOutScreen extends Component {
 
       </View>
     )
-  }
-}
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   view: {
@@ -76,4 +76,4 @@ const styles = StyleSheet.create({
     fontSize: 30,
     textAlign: 'center',
   }
-});
+}); // end styles

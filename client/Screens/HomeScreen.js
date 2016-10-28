@@ -24,7 +24,8 @@ export default class HomeScreen extends React.Component {
         }
       ])
     };
-  }
+  } // end constructor
+
   componentWillMount() {
     fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
       method: 'GET',
@@ -42,7 +43,8 @@ export default class HomeScreen extends React.Component {
       console.log('errorrrr');
       return console.log(JSON.parse(err));
     });
-  }
+  } // end componentWillMount
+
   render() {
     return (
       //essentially a div element
@@ -75,8 +77,8 @@ export default class HomeScreen extends React.Component {
         </ScrollView>
       </View>
     );
-  }
-}
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   container: {
@@ -122,4 +124,4 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white'
   }
-});
+}); // end styles

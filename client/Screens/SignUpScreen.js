@@ -11,7 +11,7 @@ export default class SignUpScreen extends Component {
       Password: '',
       errBoxInit: false // this is to hide the hidden view when app first renders
     };
-  }
+  } // end constructor
 
   signupPressHandler() {
     // AJAX request to http://server_ip/api/users/signup
@@ -39,7 +39,7 @@ export default class SignUpScreen extends Component {
         this.setState({errBoxInit: true});
       }
     });
-  }
+  } // end signupPressHandler
 
   render() {
     // this is the hiddenText that will display if the hidden view is revealed due to ajax call receiving bad response
@@ -89,8 +89,8 @@ export default class SignUpScreen extends Component {
         </View>
       </View>
     );
-  }
-}
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   view: {
@@ -145,4 +145,4 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white'
   }
-});
+}); // end styles
