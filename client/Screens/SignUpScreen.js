@@ -47,32 +47,44 @@ export default class SignUpScreen extends Component {
 
     return (
 
-      <View style={styles.view}>
+      <View style={styles.viewContainer}>
+       
+        {/* View Image */}
         <View style={styles.header}>
           <Image 
             source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
             style={{width: 100, height: 40, marginLeft: 125, marginTop: 30, marginBottom: 10}} 
             />
         </View>
+
+        {/* View Image Text */}
         <Text style={styles.title}>SignUp and Jam Out!</Text>
+
+        {/* Text Input */}
         <TextInput
           style={styles.input}
           onChangeText={(text) => this.setState({Username: text})}
           value={this.state.Username}
           placeholder='username'
         />
+
+        {/* Text Input */}
         <TextInput 
           style={styles.input}
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
           placeholder='password'
         />
+
+        {/* Touchable */}
         <TouchableOpacity
           onPress={this.signupPressHandler.bind(this)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
+
+        {/* Touchable */}
         <View>
           <TouchableOpacity
             onPress={() => {
@@ -83,17 +95,19 @@ export default class SignUpScreen extends Component {
             <Text style={styles.buttonText}> Already have an Account?</Text>
           </TouchableOpacity>
         </View>
-      {/* Hidden error message box for when username is not available */}
+
+        {/* Hidden error message box for when username is not available */}
         <View style={styles.errorMessageBox}>
           <Text style={styles.errorMessageBoxText}>{hiddenText}</Text>
         </View>
-      </View>
+
+      </View> // end viewContainer
     );
   } // end render
 } // end exports default
 
 const styles = StyleSheet.create({
-  view: {
+  viewContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',

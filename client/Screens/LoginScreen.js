@@ -52,8 +52,9 @@ export default class LoginScreen extends Component {
     var hiddenText = this.state.errBoxInit ? "Incorrect Password or Username" : "";
     
     return (
-      <View style={styles.view}>
+      <View style={styles.viewContainer}>
         <Text style={styles.title}>Login and Jam Out!</Text>
+        {/* TextInput */}
         <TextInput
           style={styles.input}
           onChangeText={(text) => {
@@ -62,18 +63,24 @@ export default class LoginScreen extends Component {
           value={this.state.Username}
           placeholder='Username'
         />
+
+        {/* TextInput */}
         <TextInput 
           style={styles.input}
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
           placeholder='Password'
         />
+
+        {/* Touchable */}
         <TouchableOpacity
           onPress={this.loginPressHandler.bind(this)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
+
+        {/* Touchable */}
         <View>
           <TouchableOpacity
           //the navigator of the react native works like a stack
@@ -87,17 +94,18 @@ export default class LoginScreen extends Component {
           </TouchableOpacity>
         </View>
 
+        {/* Hidden view */}
         <View style={styles.errorMessageBox}>
           <Text style={styles.errorMessageBoxText}>{hiddenText}</Text>
         </View>
 
-      </View>
+      </View> // end View container
     );
   } // end render
 } // end exports default
 
 const styles = StyleSheet.create({
-  view: {
+  viewContainer: {
     flex: 1,
     flexDirection: 'column',
     justifyContent: 'center',
