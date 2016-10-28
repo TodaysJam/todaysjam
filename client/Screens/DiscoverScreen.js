@@ -34,7 +34,7 @@ export default class DiscoverScreen extends React.Component {
             style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
             />
         </View>
-        <Text style={styles.textB}>Global Jamz</Text>
+        <Text style={styles.headerText}>Global Jamz</Text>
         <ScrollView style={styles.container}>
          <ListView
           dataSource={this.state.dataSource}
@@ -42,14 +42,14 @@ export default class DiscoverScreen extends React.Component {
           //with input from database
           renderRow={(rowData, i) => (
           /* Need to figure out how to map touchable elements */
-            <View key={i} style={styles.bordy}>
-              <Text style={styles.text} >Jam Name: {rowData.name}</Text>
-              <View style={styles.horiContainer}>
-                <Text style={styles.text} >Description: {rowData.description}</Text>
-                <Text style={styles.text} >Score: {rowData.score}</Text>
+            <View key={i} style={styles.jamView} className="jamView">
+              <View style={styles.jamDescription}>
+                <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
+                <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
+                <Text style={styles.descriptionText} >Score: {rowData.score}</Text>
               </View>
-              <TouchableOpacity style={styles.addBordy}>
-                <Text style={styles.textS} onPress={this.addJamPressHandler.bind(rowData)}>Add Me to Your Jamz!</Text>
+              <TouchableOpacity style={styles.addJamButton}>
+                <Text style={styles.addJamText} onPress={this.addJamPressHandler.bind(rowData)}>Add Me to Your Jamz!</Text>
               </TouchableOpacity>
             </View>
           )}
@@ -59,7 +59,7 @@ export default class DiscoverScreen extends React.Component {
     );
   }
 
-  componentDidMount() {
+  componentWillMount() {
     fetch('https://todaysjam.herokuapp.com/api/jams', {
       method: 'GET',
       headers: {
@@ -68,7 +68,6 @@ export default class DiscoverScreen extends React.Component {
       }
     })
     .then((res) => {
-      console.log('response', res._bodyText)
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
     })
   }
@@ -89,8 +88,16 @@ export default class DiscoverScreen extends React.Component {
       })
     })
     .then((res) =>  {
-      //TODO: remove the div after it is clicked
-      View.hide = true;
+      var self = this;
+      this.setState({
+        className: 'fading'
+      });
+      setTimeout(function() {
+        self.setState({
+          className: 'none'
+        });
+      }, 1000);
+      console.log(this.state);
     })
   }
 }
@@ -102,46 +109,51 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#9e34a7',
+    borderRadius: 7,
   },
-  horiContainer: {
+  jamDescription: {
     flexDirection: 'column',
     flex: 1,
     backgroundColor: '#fff',
+    borderRadius: 7,
   },
-  textB: {
+  headerText: {
     marginLeft: 5,
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white'
   },
-  text: {
-    fontSize: 16
+  descriptionText: {
+    fontSize: 16,
+    borderRadius: 7
   },
-  textS: {
+  addJamText: {
     fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
+    borderRadius: 7
   },
-  bordy: {
+  jamView: {
     borderWidth: 1,
     borderRadius: 7,
-    height: 110,
-    marginLeft: 5,
-    marginRight: 5,
-    marginBottom: 2,
+    height: 100,
+    marginLeft: 7,
+    marginRight: 7,
+    marginBottom: 7,
     borderColor: 'gray',
     backgroundColor: '#fff',
   },
-  addBordy: {
-    marginBottom: 10,
+  addJamButton: {
     borderWidth: 2,
-    borderRadius: 5,
+    borderRadius: 7,
     width: 130,
     borderColor: 'gray',
     backgroundColor: '#00b33c',
+    alignSelf: 'flex-end',
+    flex: 10
   },
   header: {
     backgroundColor: 'white'
-  }
+  },
 });

@@ -58,8 +58,8 @@ export default class DiscoverScreen extends Component {
             />
         </View>
         <View style={styles.formContainer}>
-          <View style={styles.formy}>
-            <Text style={styles.textB}>Create your Jam!</Text>
+          <View style={styles.inputForm}>
+            <Text style={styles.headerText}>Create your Jam!</Text>
             <TextInput
               style={styles.textInputName}
               placeholder='Jam Name'
@@ -75,7 +75,7 @@ export default class DiscoverScreen extends Component {
           </View>
           <TouchableOpacity
             onPress={this.createPressHandler.bind(this)}
-            style={styles.button}
+            style={styles.inputButton}
           >
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
@@ -114,7 +114,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray', 
     borderWidth: 1
   },
-  textB: {
+  headerText: {
     fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white'
   },
-  button: {
+  inputButton: {
     borderColor: 'gray',
     borderWidth: 5,
     borderRadius: 10,
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     paddingTop: 5,
     backgroundColor: '#00b33c',
   },
-  formy: {
+  inputForm: {
     marginTop: 45
   },
   header: {
