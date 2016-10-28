@@ -27,19 +27,17 @@ export default class HomeScreen extends React.Component {
   } // end constructor
 
   componentWillMount() {
-    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
+    fetch('https://localhost:3000/api/users/jams/' + global._globalUserId, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      console.log('ressssssssssss', res);
-      console.log('response', res._bodyText);
-      if (res._bodyText !== undefined) {
-        this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
-      }
+    .then((results) => {
+      console.log('ressssssssssss', results);
+      console.log('response', results._bodyText);
+        this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(results._bodyText))});
     })
     .catch((err) => {
       console.log('errorrrr');

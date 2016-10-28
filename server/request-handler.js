@@ -61,7 +61,7 @@ exports.fetchUsersJams = function (req, res) {
   console.log('req.params*****', userId);
   Jam.find({user: {_id: userId}}).exec(function(err, jams) {
     console.log('found a user!!', jams);
-    res.send(jams);
+    res.status(200).send(jams);
   });
 };
 
