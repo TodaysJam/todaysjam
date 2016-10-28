@@ -43,8 +43,8 @@ exports.signupUser = function (req, res) {
         }
       });
     }
-  })
-}
+  });
+};
 
 // fetch all jams 
 exports.fetchJams = function (req, res) {
@@ -57,9 +57,10 @@ exports.fetchJams = function (req, res) {
 // fetch all jams for the given user
 // requires "username" field with username
 exports.fetchUsersJams = function (req, res) {
-  var userId = req.params.userId.slice(1);
+  var userId = req.params.userId
   console.log('req.params*****', userId);
-  Jam.find({user: userId}).exec(function(err, jams) {
+  Jam.find({user: {_id: userId}}).exec(function(err, jams) {
+    console.log('found a user!!', jams);
     res.status(200).send(jams);
   });
 };

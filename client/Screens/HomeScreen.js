@@ -18,9 +18,9 @@ export default class HomeScreen extends React.Component {
     this.state = {
       dataSource: this.ds.cloneWithRows([
         {
-          name: 'name',
-          jam: 'jam name',
-          description: 'this is a jam description'
+          name: '',
+          jam: '',
+          description: 'You have no Jams!'
         }
       ])
     };
@@ -34,10 +34,10 @@ export default class HomeScreen extends React.Component {
         'Content-Type': 'application/json'
       }
     })
-    .then((res) => {
-      console.log('ressssssssssss', res);
-      console.log('response', res._bodyText);
-      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
+    .then((results) => {
+      console.log('ressssssssssss', results);
+      console.log('response', results._bodyText);
+        this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(results._bodyText))});
     })
     .catch((err) => {
       console.log('errorrrr');
