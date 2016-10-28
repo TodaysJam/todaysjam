@@ -27,7 +27,7 @@ export default class HomeScreen extends React.Component {
   } // end constructor
 
   componentWillMount() {
-    fetch('https://localhost:3000/api/users/jams/' + global._globalUserId, {
+    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
       method: 'GET',
       headers: {
         'Accept': 'application/json',
