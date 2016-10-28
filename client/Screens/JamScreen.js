@@ -9,7 +9,7 @@ export default class DiscoverScreen extends Component {
       jamName: '',
       jamDescription: ''
     };
-  }
+  } // end constructor
 
   createPressHandler() {
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
@@ -37,7 +37,7 @@ export default class DiscoverScreen extends Component {
     .catch((err) => {
       console.log('error message: ', err);
     });
-  }
+  } // end createPressHandler
 
   /* information needed to 
   name: String,
@@ -51,39 +51,51 @@ export default class DiscoverScreen extends Component {
   render() {
     return (
       <View>
+        {/* View Image */}
         <View style={styles.header}>
           <Image 
             source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
             style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
             />
         </View>
+
         <View style={styles.formContainer}>
           <View style={styles.inputForm}>
+
+            {/* View Image text */}
             <Text style={styles.headerText}>Create your Jam!</Text>
+
+            {/* TextInput */}
             <TextInput
               style={styles.textInputName}
               placeholder='Jam Name'
               onChangeText={(jamName) => this.setState({jamName: jamName})}
               value={this.state.jamName}
             />
+
+            {/* TextInput */}
             <TextInput
               style={styles.textInputDescription}
               placeholder='Jam Description'
               onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
               value={this.state.jamDescription}
-            />
+            /> 
+            
           </View>
+
+          {/* Touchable */}
           <TouchableOpacity
             onPress={this.createPressHandler.bind(this)}
             style={styles.inputButton}
           >
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
+
         </View>
-      </View>
+      </View> // end view container
     );
-  }
-}
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   formContainer: {
@@ -144,4 +156,4 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white'
   }
-});
+}); // end styles

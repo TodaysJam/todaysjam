@@ -24,7 +24,8 @@ export default class HomeScreen extends React.Component {
         }
       ])
     };
-  }
+  } // end constructor
+
   componentWillMount() {
     fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
       method: 'GET',
@@ -42,18 +43,24 @@ export default class HomeScreen extends React.Component {
       console.log('errorrrr');
       return console.log(JSON.parse(err));
     });
-  }
+  } // end componentWillMount
+
   render() {
     return (
       //essentially a div element
       <View style={styles.container}>
+        {/* View Header Image */}
         <View style={styles.header}>
           <Image 
             source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
             style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
             />
         </View>
+
+        {/* View Header Image Text */}
         <Text style={styles.headerText}>Your Jams</Text>
+
+        {/* ScrollView */}
         <ScrollView style={styles.container}>
          <ListView
           dataSource={this.state.dataSource}
@@ -73,10 +80,11 @@ export default class HomeScreen extends React.Component {
           )}
         />
         </ScrollView>
-      </View>
+        
+      </View> // end view container
     );
-  }
-}
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   container: {
@@ -122,4 +130,4 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white'
   }
-});
+}); // end styles

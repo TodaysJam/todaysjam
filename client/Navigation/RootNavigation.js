@@ -20,6 +20,39 @@ import { Entypo, Ionicons, Octicons } from '@exponent/vector-icons';
 //navigation bar
   //the items are the individual tabs that lead to screens
 export default class RootNavigation extends Component {
+  //renders Icon from Entypo Library based on name from Exponent
+  _renderEntypo(name, isSelected) {
+    return (
+      <Entypo
+        name={name}
+        size={32}
+        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
+      />
+    );
+  }
+
+  //renders Icon from Iconicons Library based on name from Exponent
+  _renderIonicons(name, isSelected) {
+    return (
+      <Ionicons
+        name={name}
+        size={32}
+        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
+      />
+    );
+  }
+
+  //renders Icon from Octicons Library based on name from Exponent
+  _renderOcticons(name, isSelected) {
+    return (
+      <Octicons 
+        name={name}
+        size={32}
+        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
+      />
+    );
+  }
+
   render() {
     return (
        <TabNavigation
@@ -52,38 +85,7 @@ export default class RootNavigation extends Component {
 
       </TabNavigation>
     );
-  }
-  //renders Icon from Entypo Library based on name from Exponent
-  _renderEntypo(name, isSelected) {
-    return (
-      <Entypo
-        name={name}
-        size={32}
-        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
-      />
-    );
-  }
-  //renders Icon from Iconicons Library based on name from Exponent
-  _renderIonicons(name, isSelected) {
-    return (
-      <Ionicons
-        name={name}
-        size={32}
-        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
-      />
-    );
-  }
-
-  //renders Icon from Octicons Library based on name from Exponent
-  _renderOcticons(name, isSelected) {
-    return (
-      <Octicons 
-        name={name}
-        size={32}
-        color={isSelected ? Colors.tabIconSelected : Colors.tabIconDefault}
-      />
-    );
-  }
+  } // end render
 } //end exports default 
 
 const styles = StyleSheet.create({
@@ -94,4 +96,4 @@ const styles = StyleSheet.create({
   selectedTab: {
     color: Colors.tabIconSelected,
   },
-});
+}); // end styles

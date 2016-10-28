@@ -22,42 +22,7 @@ export default class DiscoverScreen extends React.Component {
           score: '0'
         }])
     };
-  }
-
-  render() {
-    return (
-      //essentially a div element
-      <View style={styles.container}>
-        <View style={styles.header}>
-          <Image 
-            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
-            />
-        </View>
-        <Text style={styles.headerText}>Global Jamz</Text>
-        <ScrollView style={styles.container}>
-         <ListView
-          dataSource={this.state.dataSource}
-          //creates all the group activities dynamically 
-          //with input from database
-          renderRow={(rowData, i) => (
-          /* Need to figure out how to map touchable elements */
-            <View key={i} style={styles.jamView} className="jamView">
-              <View style={styles.jamDescription}>
-                <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
-                <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
-                <Text style={styles.descriptionText} >Score: {rowData.score}</Text>
-              </View>
-              <TouchableOpacity style={styles.addJamButton}>
-                <Text style={styles.addJamText} onPress={this.addJamPressHandler.bind(rowData)}>Add Me to Your Jamz!</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-        />
-        </ScrollView>
-      </View>
-    );
-  }
+  } // end constructor
 
   componentWillMount() {
     fetch('https://todaysjam.herokuapp.com/api/jams', {
@@ -70,7 +35,8 @@ export default class DiscoverScreen extends React.Component {
     .then((res) => {
       this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
     })
-  }
+  } // end componentWillMount
+
   addJamPressHandler () {
     fetch('https://todaysjam.herokuapp.com/api/jams/create', {
       method: 'POST',
@@ -99,11 +65,49 @@ export default class DiscoverScreen extends React.Component {
       }, 1000);
       console.log(this.state);
     })
-  }
-}
+  } // end addJamPressHandler
 
+  render() {
+    return (
+      //a view is essentially a div element
+      <View style={styles.container}>
+        {/* View Header Image */}
+        <View style={styles.header}>
+          <Image 
+            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            />
+        </View>
 
+        {/* View Header Text */}
+        <Text style={styles.headerText}>Global Jamz</Text>
 
+        {/* ScrollView */}
+        <ScrollView style={styles.container}>
+         <ListView
+          dataSource={this.state.dataSource}
+          //creates all the group activities dynamically 
+          //with input from database
+          renderRow={(rowData, i) => (
+          /* Need to figure out how to map touchable elements */
+            <View key={i} style={styles.jamView} className="jamView">
+              <View style={styles.jamDescription}>
+                <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
+                <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
+                <Text style={styles.descriptionText} >Score: {rowData.score}</Text>
+              </View>
+              <TouchableOpacity style={styles.addJamButton}>
+                <Text style={styles.addJamText} onPress={this.addJamPressHandler.bind(rowData)}>Add Me to Your Jamz!</Text>
+              </TouchableOpacity>
+            </View>
+          )}
+        />
+        </ScrollView>
+
+      </View> // end View Container
+    );
+  } // end render
+} // end exports default
 
 const styles = StyleSheet.create({
   container: {
@@ -156,4 +160,4 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: 'white'
   },
-});
+}); // end styles
