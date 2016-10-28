@@ -66,6 +66,7 @@ export default class HomeScreen extends React.Component {
           dataSource={this.state.dataSource}
           //creates all the jams dynamically 
           //with input from database
+          enableEmptySections={true}
           renderRow={(rowData, i) => (
             <View key={i} style={styles.jamView}>
               <Text style={styles.descriptionText} >Jam Name: {rowData.jam}</Text>
