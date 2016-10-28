@@ -62,6 +62,7 @@ export default class SignUpScreen extends Component {
           placeholder='username'
         />
         <TextInput 
+          secureTextEntry={true}
           style={styles.input}
           onChangeText={(text) => this.setState({Password: text})}
           value={this.state.Password}
@@ -78,7 +79,6 @@ export default class SignUpScreen extends Component {
             onPress={() => {
               this.props.navigator.push(Router.getRoute('Login'));
             }}
-            style={styles.button}
           >
             <Text style={styles.buttonText}> Already have an Account?</Text>
           </TouchableOpacity>
@@ -120,8 +120,8 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 5,
     borderRadius: 10,
-    height: 70,
-    width: 200,
+    height: 48,
+    width: 160,
     marginTop: 25,
     paddingTop: 5,
     backgroundColor: '#00b33c',
@@ -131,7 +131,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 18,
+    marginTop: 3
   },
   errorMessageBox: {
     alignItems: 'center',
