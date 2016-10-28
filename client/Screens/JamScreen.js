@@ -51,7 +51,7 @@ export default class DiscoverScreen extends Component {
   render() {
     return (
       <View>
-        {/* View Header Image */}
+        {/* View Image */}
         <View style={styles.header}>
           <Image 
             source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
@@ -62,7 +62,7 @@ export default class DiscoverScreen extends Component {
         <View style={styles.formContainer}>
           <View style={styles.inputForm}>
 
-            {/* View Header Image Text */}
+            {/* View Image text */}
             <Text style={styles.headerText}>Create your Jam!</Text>
 
             {/* TextInput */}
@@ -79,9 +79,9 @@ export default class DiscoverScreen extends Component {
               placeholder='Jam Description'
               onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
               value={this.state.jamDescription}
-            />
-
-          </View> {/* end viewInputForm container */}
+            /> 
+            
+          </View>
 
           {/* Touchable */}
           <TouchableOpacity
@@ -91,7 +91,7 @@ export default class DiscoverScreen extends Component {
             <Text style={styles.buttonText}>Submit</Text>
           </TouchableOpacity>
 
-        </View> {/* end formContainer */}
+        </View>
       </View> // end view container
     );
   } // end render
