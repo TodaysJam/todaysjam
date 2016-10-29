@@ -10,17 +10,8 @@ export default class SignOutScreen extends Component {
 
   // verify if user really wants to log out
   signOutPressHandler() {
-    console.log('signout wired');
-    // not redirecting correctly, it just replaces the screen with the newly routed screen, doesnt actually redirect
-    // this.props.navigator.push(Router.getRoute('Login'));
-    
-    // var routeOfLogin = {
-    //   title: 'Login',
-    //   component: Router.getRoute('Login'),
-    //   navigationBarHidden: true
-    // };
-    // this.props.navigator.push(Router.goToView(routeOfLogin));
-
+    //use getNavigator to get to the root level
+    this.props.navigation.getNavigator('root').push(Router.getRoute('Login'));
   } // end signoutPressHandler
 
   // returns users to homepage if logout icon was accidentally clicked, they can also use the navbar this is just a convenience
