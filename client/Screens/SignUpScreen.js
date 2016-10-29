@@ -164,8 +164,8 @@ const styles = StyleSheet.create({
     fontStyle: 'italic'
   },
   brand: {
-    width: 150,
-    height: 75, 
-    marginBottom: 60
+    width: 175,
+    height: 85, 
+    marginBottom: 50
   }
 }); // end styles
