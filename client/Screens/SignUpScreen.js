@@ -50,11 +50,11 @@ export default class SignUpScreen extends Component {
       <View style={styles.viewContainer}>
        
         {/* View Image */}
-        <View style={styles.header}>
+        <View>
           <Image 
             // source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
             source={require('../.././assets/todaysjambrand2.png')}
-            style={{width: 150, height: 75, marginBottom: 60}} 
+            style={styles.brand} 
             />
         </View>
 
@@ -156,4 +156,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 10
   },
+  brand: {
+    width: 150,
+    height: 75, 
+    marginBottom: 60
+  }
 }); // end styles
