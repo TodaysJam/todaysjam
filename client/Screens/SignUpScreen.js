@@ -2,6 +2,7 @@ import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 import Router from '../Navigation/Router';
+import { Components } from 'exponent';
 
 export default class SignUpScreen extends Component {
   constructor() {
@@ -46,14 +47,17 @@ export default class SignUpScreen extends Component {
     var hiddenText = this.state.errBoxInit ? "Username Already Exists" : "";
 
     return (
-
-      <View style={styles.viewContainer}>
+      // Components.LinearGradient doubles as the top level view container in addition to applying a gradient effect
+      <Components.LinearGradient 
+        colors={['#9e34a7', '#ad53b5']} 
+        style={styles.viewContainer} >
        
         {/* View Image */}
-        <View style={styles.header}>
+        <View>
           <Image 
-            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-            style={{width: 100, height: 40, marginLeft: 125, marginTop: 30, marginBottom: 10}} 
+            // source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            source={require('../.././assets/todaysjambrand2.png')}
+            style={styles.brand} 
             />
         </View>
 
@@ -101,7 +105,7 @@ export default class SignUpScreen extends Component {
           <Text style={styles.errorMessageBoxText}>{hiddenText}</Text>
         </View>
 
-      </View> // end viewContainer
+      </Components.LinearGradient> // end Components.LinearGradient
     );
   } // end render
 } // end exports default
@@ -112,13 +116,14 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#9e34a7'
+    // backgroundColor: '#9e34a7'
   },
   title: {
     fontSize: 24,
     color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'transparent' // this is very important when working with component.lineargradient
   },
   input: {
     fontSize: 16,
@@ -144,18 +149,23 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
+    backgroundColor: 'transparent'
   },
   errorMessageBox: {
     alignItems: 'center',
     marginTop: 25
   },
   errorMessageBoxText: {
-    color: 'red',
+    color: '#ff0000',
     textAlign: 'center',
-    fontSize: 10
+    fontSize: 20,
+    backgroundColor: 'transparent',
+    fontStyle: 'italic'
   },
-  header: {
-    backgroundColor: 'white'
+  brand: {
+    width: 175,
+    height: 85, 
+    marginBottom: 50
   }
 }); // end styles
