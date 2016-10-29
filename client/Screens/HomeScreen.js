@@ -69,8 +69,8 @@ export default class HomeScreen extends React.Component {
           enableEmptySections={true}
           renderRow={(rowData, i) => (
             <View key={i} style={styles.jamView}>
-              <Text style={styles.descriptionText} >Jam Name: {rowData.jam}</Text>
-              <Text style={styles.descriptionText} >Points: {rowData.points}</Text>
+              <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
+              <Text style={styles.descriptionText} >Points: {rowData.score}</Text>
               <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
               <View>
                 <TouchableOpacity style={styles.jamCheckinButton}>
