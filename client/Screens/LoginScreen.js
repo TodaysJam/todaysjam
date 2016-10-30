@@ -2,6 +2,7 @@ import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 import Router from '../Navigation/Router';
+import { Components } from 'exponent';
 
 export default class LoginScreen extends Component {
   constructor() {
@@ -52,7 +53,19 @@ export default class LoginScreen extends Component {
     var hiddenText = this.state.errBoxInit ? "Incorrect Password or Username" : "";
     
     return (
-      <View style={styles.viewContainer}>
+      <Components.LinearGradient 
+        colors={['#9e34a7', '#ad53b5']} 
+        style={styles.viewContainer} >
+
+        {/* View Image */}
+        <View>
+          <Image 
+            // source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            source={require('../.././assets/todaysjambrand2.png')}
+            style={styles.brand} 
+            />
+        </View>
+
         <Text style={styles.title}>Login and Jam Out!</Text>
         {/* TextInput */}
         <TextInput
@@ -90,7 +103,7 @@ export default class LoginScreen extends Component {
               this.props.navigator.push(Router.getRoute('SignUp'));
             }}
           >
-            <Text style={styles.buttonText}> Don't have an Account?</Text>
+            <Text style={styles.buttonText2}> Don't have an Account?</Text>
           </TouchableOpacity>
         </View>
 
@@ -99,7 +112,7 @@ export default class LoginScreen extends Component {
           <Text style={styles.errorMessageBoxText}>{hiddenText}</Text>
         </View>
 
-      </View> // end View container
+      </Components.LinearGradient>
     );
   } // end render
 } // end exports default
@@ -116,7 +129,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'transparent'
   },
   input: {
     fontSize: 16,
@@ -142,7 +156,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
+    backgroundColor: 'transparent'
+  },
+  buttonText2: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 20,
+    backgroundColor: 'transparent',
+    marginTop: 20
   },
   errorMessageBox: {
     alignItems: 'center',
@@ -151,6 +174,13 @@ const styles = StyleSheet.create({
   errorMessageBoxText: {
     color: 'red',
     textAlign: 'center',
-    fontSize: 10
+    fontSize: 20,
+    backgroundColor: 'transparent',
+    fontStyle: 'italic'
+  },
+  brand: {
+    width: 175,
+    height: 85, 
+    marginBottom: 50
   }
 }); // end styles

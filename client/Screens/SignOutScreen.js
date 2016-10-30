@@ -2,6 +2,7 @@ import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Router from '../Navigation/Router';
+import { Components } from 'exponent';
 
 export default class SignOutScreen extends Component {
   constructor() {
@@ -11,24 +12,28 @@ export default class SignOutScreen extends Component {
   // verify if user really wants to log out
   signOutPressHandler() {
     //use getNavigator to get to the root level
+    global._globalUsername = undefined;
     this.props.navigation.getNavigator('root').push(Router.getRoute('Login'));
   } // end signoutPressHandler
 
   // returns users to homepage if logout icon was accidentally clicked, they can also use the navbar this is just a convenience
   goBackPressHandler() {
     console.log('goback wired');
+    this.props.navigation.getNavigator('root').push(Router.getRoute('rootNavigation'));
   } // end goBackPressHandler
 
   render() {
     return (
-      <View style={styles.viewContainer}>
+      <Components.LinearGradient 
+        colors={['#9e34a7', '#ad53b5']} 
+        style={styles.viewContainer} >
 
         {/* Image Header */}
         <Image 
-            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-            style={{width: 100, height: 40, marginBottom: 212}} 
+            source={require('../.././assets/todaysjambrand2.png')}
+            style={styles.brand} 
         />
-
+        <View style={styles.btnContainer}>
         {/* Touchable */}
         <TouchableOpacity 
           onPress={this.goBackPressHandler.bind(this)}
@@ -44,8 +49,9 @@ export default class SignOutScreen extends Component {
         >
           <Text style={styles.buttonText}>Sign Out</Text>
         </TouchableOpacity>
+        </View>
 
-      </View> // end viewContainer
+      </Components.LinearGradient> // end viewContainer
     )
   } // end render
 } // end exports default
@@ -57,6 +63,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  btnContainer: {
+    flex: 1
+  },
   button: {
     borderColor: 'gray',
     borderWidth: 5,
@@ -65,11 +74,18 @@ const styles = StyleSheet.create({
     width: 200,
     marginTop: 25,
     marginBottom: 20,
-    paddingTop: 5,
+    paddingTop: 9,
     backgroundColor: '#00b33c',
   },
   buttonText: {
     fontSize: 30,
     textAlign: 'center',
+    color: 'white'
+  },
+  brand: {
+    width: 100,
+    height: 40, 
+    marginBottom: 90,
+    marginTop: 30
   }
 }); // end styles

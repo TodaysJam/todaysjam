@@ -8,6 +8,7 @@ import {
   ListView,
   Image
 } from 'react-native';
+import { Components } from 'exponent';
 
 //homepage with active groups and find/create button
 export default class DiscoverScreen extends React.Component { 
@@ -67,12 +68,15 @@ export default class DiscoverScreen extends React.Component {
   render() {
     return (
       //a view is essentially a div element
-      <View style={styles.container}>
+        <Components.LinearGradient 
+          colors={['#9e34a7', '#ad53b5']} 
+          style={styles.viewContainer} >
+
         {/* View Header Image */}
-        <View style={styles.header}>
+        <View>
           <Image 
-            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            source={require('../.././assets/todaysjambrand2.png')}
+            style={styles.brand} 
             />
         </View>
 
@@ -80,7 +84,7 @@ export default class DiscoverScreen extends React.Component {
         <Text style={styles.headerText}>Global Jamz</Text>
 
         {/* ScrollView */}
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.viewContainer}>
          <ListView
           dataSource={this.state.dataSource}
           //creates all the group activities dynamically 
@@ -93,6 +97,8 @@ export default class DiscoverScreen extends React.Component {
                 <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
                 <Text style={styles.descriptionText} >Score: {rowData.score}</Text>
               </View>
+
+              {/* Touchable */}
               <TouchableOpacity style={rowData.user[0] === global._globalUserId ? styles.addedButton : styles.addJamButton}>
                 <Text 
                   style={styles.addJamText} 
@@ -105,15 +111,15 @@ export default class DiscoverScreen extends React.Component {
         />
         </ScrollView>
 
-      </View> // end View Container
+      </Components.LinearGradient>
     );
   } // end render
 } // end exports default
 
 const styles = StyleSheet.create({
-  container: {
+  viewContainer: {
     flex: 1,
-    backgroundColor: '#9e34a7',
+    backgroundColor: 'transparent',
     borderRadius: 7,
   },
   jamDescription: {
@@ -123,14 +129,16 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   headerText: {
-    marginLeft: 5,
+    marginLeft: 8,
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white'
   },
   descriptionText: {
     fontSize: 16,
-    borderRadius: 7
+    borderRadius: 7,
+    marginLeft: 1,
+    backgroundColor: 'transparent'
   },
   addJamText: {
     fontSize: 12,
@@ -167,7 +175,11 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
     flex: 10
   },
-  header: {
-    backgroundColor: 'white'
-  },
+  brand: {
+    width: 100, 
+    height: 40, 
+    marginLeft: 110, 
+    marginTop: 30, 
+    marginBottom: 10
+  }
 }); // end styles
