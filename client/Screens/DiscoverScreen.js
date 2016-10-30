@@ -96,8 +96,12 @@ export default class DiscoverScreen extends React.Component {
                 <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
                 <Text style={styles.descriptionText} >Score: {rowData.score}</Text>
               </View>
-              <TouchableOpacity style={styles.addJamButton}>
-                <Text style={styles.addJamText} onPress={this.addJamPressHandler.bind(rowData)}>Add Me to Your Jamz!</Text>
+              <TouchableOpacity style={rowData.user[0] === global._globalUserId ? styles.addedButton : styles.addJamButton}>
+                <Text 
+                  style={styles.addJamText} 
+                  onPress={this.addJamPressHandler.bind(rowData)}>
+                    {rowData.user[0] === global._globalUserId ? 'Added to Your Jamz' : 'Add Me to Your Jamz!'}
+                </Text>
               </TouchableOpacity>
             </View>
           )}
@@ -147,6 +151,15 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     borderColor: 'gray',
     backgroundColor: '#fff',
+  },  
+  addedButton: {
+    borderWidth: 2,
+    borderRadius: 7,
+    width: 130,
+    borderColor: 'gray',
+    backgroundColor: red,
+    alignSelf: 'flex-end',
+    flex: 10
   },
   addJamButton: {
     borderWidth: 2,
