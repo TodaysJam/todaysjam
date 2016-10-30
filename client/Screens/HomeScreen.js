@@ -65,7 +65,7 @@ export default class HomeScreen extends React.Component {
         <Text style={styles.headerText}>Your Jams</Text>
 
         {/* ScrollView */}
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.viewContainer}>
          <ListView
           dataSource={this.state.dataSource}
           //creates all the jams dynamically 
@@ -94,16 +94,18 @@ export default class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
-    backgroundColor: '#9e34a7',
+    backgroundColor: 'transparent',
   },
   jamCheckinText: {
     fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
   },
   descriptionText: {
-    fontSize: 16
+    fontSize: 16,
+    marginLeft: 1,
+    backgroundColor: 'transparent'
   },
   headerText: {
     marginLeft: 8,
@@ -114,7 +116,7 @@ const styles = StyleSheet.create({
   },
   jamView: {
     borderWidth: 1,
-    borderRadius: 7,
+    borderRadius: 9,
     height: 110,
     marginLeft: 5,
     marginRight: 5,
@@ -131,6 +133,7 @@ const styles = StyleSheet.create({
     width: 90,
     marginTop: 10,
     marginBottom: 10,
+    marginLeft: 1,
     backgroundColor: '#00b33c',
   },
   brand: {
