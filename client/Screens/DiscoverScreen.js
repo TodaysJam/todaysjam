@@ -97,6 +97,8 @@ export default class DiscoverScreen extends React.Component {
                 <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
                 <Text style={styles.descriptionText} >Score: {rowData.score}</Text>
               </View>
+
+              {/* Touchable */}
               <TouchableOpacity style={rowData.user[0] === global._globalUserId ? styles.addedButton : styles.addJamButton}>
                 <Text 
                   style={styles.addJamText} 
