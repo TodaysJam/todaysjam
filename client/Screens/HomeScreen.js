@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { Components } from 'exponent';
 
+global._globalRefreshingInterval = 60000;
 //homepage with active groups and find/create button
 export default class HomeScreen extends React.Component { 
   constructor() {
@@ -46,6 +47,30 @@ export default class HomeScreen extends React.Component {
     });
   } // end componentWillMount
 
+  checkin(rowData, index) {
+    fetch('https://todaysjam.herokuapp.com/api/users/jams/checkin', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        id: rowData._id
+      })
+    })
+    .then((res) => {
+      //update the entry of dataSource, with the response from the server
+      var updatedDataSource = Object.assign({}, this.state.dataSource)._dataBlob.s1;
+      console.log('real data', updatedDataSource);
+      console.log('the one changing: ', updatedDataSource[index]);
+      updatedDataSource[index]=JSON.parse(res._bodyText);
+      this.setState({dataSource: this.ds.cloneWithRows(updatedDataSource)});
+    })
+    .catch((err) => {
+      console.log('error message: ', err);
+    })
+  }// checkin function to fire ajax call to the server to check in an event
+
   render() {
     return (
       //essentially a div element
@@ -71,14 +96,23 @@ export default class HomeScreen extends React.Component {
           //creates all the jams dynamically 
           //with input from database
           enableEmptySections={true}
-          renderRow={(rowData, i) => (
+          renderRow={(rowData, i, index) => (
             <View key={i} style={styles.jamView}>
               <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
               <Text style={styles.descriptionText} >Points: {rowData.score}</Text>
               <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
               <View>
-                <TouchableOpacity style={styles.jamCheckinButton}>
-                  <Text style={styles.jamCheckinText}>Jam Complete</Text>
+                <TouchableOpacity 
+                  onPress={this.checkin.bind(this, rowData, index)}
+                  style={
+                    rowData.lastCheckin ? 
+                      (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? styles.jamNeedtoCheckinButton : styles.jamCheckinButton) 
+                    : styles.jamNeedtoCheckinButton}>
+                  <Text style={styles.jamCheckinText}>
+                    {rowData.lastCheckin ? 
+                      (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? 'Check In' : 'Mission Completed')  
+                    : 'Check In'}
+                  </Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -135,6 +169,16 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginLeft: 1,
     backgroundColor: '#00b33c',
+  },
+  jamNeedtoCheckinButton: {
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: 'gray',
+    width: 90,
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 1,
+    backgroundColor: 'red',
   },
   brand: {
     width: 100,
