@@ -103,7 +103,7 @@ export default class LoginScreen extends Component {
               this.props.navigator.push(Router.getRoute('SignUp'));
             }}
           >
-            <Text style={styles.buttonText}> Don't have an Account?</Text>
+            <Text style={styles.buttonText2}> Don't have an Account?</Text>
           </TouchableOpacity>
         </View>
 
@@ -158,6 +158,14 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     backgroundColor: 'transparent'
+  },
+  buttonText2: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    fontSize: 20,
+    backgroundColor: 'transparent',
+    marginTop: 20
   },
   errorMessageBox: {
     alignItems: 'center',
