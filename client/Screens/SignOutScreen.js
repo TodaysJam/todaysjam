@@ -2,6 +2,7 @@ import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Image, StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Router from '../Navigation/Router';
+import { Components } from 'exponent';
 
 export default class SignOutScreen extends Component {
   constructor() {
@@ -21,14 +22,16 @@ export default class SignOutScreen extends Component {
 
   render() {
     return (
-      <View style={styles.viewContainer}>
+      <Components.LinearGradient 
+        colors={['#9e34a7', '#ad53b5']} 
+        style={styles.viewContainer} >
 
         {/* Image Header */}
         <Image 
-            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-            style={{width: 100, height: 40, marginBottom: 212}} 
+            source={require('../.././assets/todaysjambrand2.png')}
+            style={styles.brand} 
         />
-
+        <View style={styles.btnContainer}>
         {/* Touchable */}
         <TouchableOpacity 
           onPress={this.goBackPressHandler.bind(this)}
@@ -44,8 +47,9 @@ export default class SignOutScreen extends Component {
         >
           <Text style={styles.buttonText}>Sign Out</Text>
         </TouchableOpacity>
+        </View>
 
-      </View> // end viewContainer
+      </Components.LinearGradient> // end viewContainer
     )
   } // end render
 } // end exports default
@@ -56,6 +60,9 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  btnContainer: {
+    flex: 1
   },
   button: {
     borderColor: 'gray',
@@ -71,5 +78,12 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 30,
     textAlign: 'center',
+    color: 'white'
+  },
+  brand: {
+    width: 100,
+    height: 40, 
+    marginBottom: 90,
+    marginTop: 30
   }
 }); // end styles
