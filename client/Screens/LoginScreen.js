@@ -120,7 +120,8 @@ const styles = StyleSheet.create({
     fontSize: 24,
     color: 'white',
     fontWeight: 'bold',
-    textAlign: 'center'
+    textAlign: 'center',
+    backgroundColor: 'transparent'
   },
   input: {
     fontSize: 16,
@@ -146,7 +147,8 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
-    fontSize: 20
+    fontSize: 20,
+    backgroundColor: 'transparent'
   },
   errorMessageBox: {
     alignItems: 'center',
