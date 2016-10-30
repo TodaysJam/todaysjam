@@ -8,6 +8,7 @@ import {
   ListView,
   Image
 } from 'react-native';
+import { Components } from 'exponent';
 
 //homepage with active groups and find/create button
 export default class DiscoverScreen extends React.Component { 
@@ -67,7 +68,10 @@ export default class DiscoverScreen extends React.Component {
   render() {
     return (
       //a view is essentially a div element
-      <View style={styles.container}>
+        <Components.LinearGradient 
+          colors={['#9e34a7', '#ad53b5']} 
+          style={styles.viewContainer} >
+
         {/* View Header Image */}
         <View style={styles.header}>
           <Image 
@@ -80,7 +84,7 @@ export default class DiscoverScreen extends React.Component {
         <Text style={styles.headerText}>Global Jamz</Text>
 
         {/* ScrollView */}
-        <ScrollView style={styles.container}>
+        <ScrollView style={styles.viewContainer}>
          <ListView
           dataSource={this.state.dataSource}
           //creates all the group activities dynamically 
@@ -105,13 +109,13 @@ export default class DiscoverScreen extends React.Component {
         />
         </ScrollView>
 
-      </View> // end View Container
+      </Components.LinearGradient>
     );
   } // end render
 } // end exports default
 
 const styles = StyleSheet.create({
-  container: {
+  viewContainer: {
     flex: 1,
     backgroundColor: '#9e34a7',
     borderRadius: 7,
