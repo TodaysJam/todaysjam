@@ -54,10 +54,10 @@ export default class HomeScreen extends React.Component {
         style={styles.viewContainer} >
 
         {/* View Header Image */}
-        <View style={styles.header}>
+        <View>
           <Image 
-            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
-            style={{width: 100, height: 40, marginLeft: 130, marginTop: 30, marginBottom: 10}} 
+            source={require('../.././assets/todaysjambrand2.png')}
+            style={styles.brand}
             />
         </View>
 
@@ -106,10 +106,11 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   headerText: {
-    marginLeft: 5,
+    marginLeft: 8,
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'white'
+    color: 'white',
+    backgroundColor: 'transparent'
   },
   jamView: {
     borderWidth: 1,
@@ -132,7 +133,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     backgroundColor: '#00b33c',
   },
-  header: {
-    backgroundColor: 'white'
+  brand: {
+    width: 100,
+    height: 40, 
+    marginLeft: 110, 
+    marginTop: 30, 
+    marginBottom: 10
   }
 }); // end styles
