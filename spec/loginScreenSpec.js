@@ -1,3 +1,5 @@
+// TODO: figure out how to configure frontend testing suite for react/enzyme tests
+
 // import React, { Component, PropTypes } from 'react';
 // import { View, Text, StyleSheet } from 'react-native';
 // import { shallow } from 'enzyme';
