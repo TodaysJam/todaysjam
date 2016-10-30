@@ -53,7 +53,8 @@ export default class DiscoverScreen extends Component {
   render() {
     return (
       <Components.LinearGradient 
-        colors={['#9e34a7', '#ad53b5']} >
+        colors={['#9e34a7', '#ad53b5']}
+        style={styles.viewContainer} >
         <ScrollView>
         {/* View Image */}
         <View style={styles.header}>
@@ -103,6 +104,12 @@ export default class DiscoverScreen extends Component {
 } // end exports default
 
 const styles = StyleSheet.create({
+  viewContainer: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   header: {
     backgroundColor: 'transparent'
   },
