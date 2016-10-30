@@ -1,7 +1,8 @@
 import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
-import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
+import { Form, Image, TextInput, View, StyleSheet, Text, ScrollView, TouchableOpacity } from 'react-native';
 import {AutoGrowingTextInput} from 'react-native-autogrow-textinput';
+import { Components } from 'exponent';
 
 export default class DiscoverScreen extends Component {
   constructor() {
@@ -51,11 +52,13 @@ export default class DiscoverScreen extends Component {
 
   render() {
     return (
-      <ScrollView>
+      <Components.LinearGradient 
+        colors={['#9e34a7', '#ad53b5']} >
+        <ScrollView>
         {/* View Image */}
         <View style={styles.header}>
           <Image 
-            source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            source={require('../.././assets/todaysjambrand2.png')}
             style={styles.image} 
             />
         </View>
@@ -93,31 +96,32 @@ export default class DiscoverScreen extends Component {
           </TouchableOpacity>
 
         </View>
-      </ScrollView> // end view container
+        </ScrollView>
+      </Components.LinearGradient> // end view container
     );
   } // end render
 } // end exports default
 
 const styles = StyleSheet.create({
   header: {
-    backgroundColor: 'white'
+    backgroundColor: 'transparent'
   },
   image: {
     width: 100,
     height: 40,
-    marginLeft: 130,
+    marginLeft: 110,
     marginTop: 30,
     marginBottom: 10
   },
   formContainer: {
     flex: 1,
-    backgroundColor: '#9e34a7',
+    backgroundColor: 'transparent',
     flexDirection: 'column',
     // justifyContent: 'center',
     alignItems: 'center',
   },
   inputForm: {
-    marginTop: 45
+    marginTop: 45,
   },
   headerText: {
     fontSize: 24,
@@ -130,7 +134,8 @@ const styles = StyleSheet.create({
     width: 300,
     height: 40, 
     borderColor: 'gray', 
-    borderWidth: 1
+    borderWidth: 1,
+    color: 'white',
   },
   textInputDescription: {
     fontSize: 18,
@@ -138,7 +143,8 @@ const styles = StyleSheet.create({
     height: 40, 
     borderColor: 'gray', 
     borderWidth: 1,
-    marginBottom: 200
+    marginBottom: 200,
+    color: 'white'
   },
   inputButton: {
     borderColor: 'gray',
@@ -146,8 +152,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 48,
     width: 160,
-    marginTop: 25,
-    marginBottom: 20,
+    marginBottom: 30,
     paddingTop: 5,
     backgroundColor: '#00b33c',
   }, 
