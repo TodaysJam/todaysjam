@@ -57,6 +57,15 @@ export default class LoginScreen extends Component {
         colors={['#9e34a7', '#ad53b5']} 
         style={styles.viewContainer} >
 
+        {/* View Image */}
+        <View>
+          <Image 
+            // source={{uri: 'https://cdn.shopify.com/s/files/1/0015/2602/files/jamzheaderrrr.jpg?v=1472243694'}}
+            source={require('../.././assets/todaysjambrand2.png')}
+            style={styles.brand} 
+            />
+        </View>
+
         <Text style={styles.title}>Login and Jam Out!</Text>
         {/* TextInput */}
         <TextInput
@@ -157,6 +166,13 @@ const styles = StyleSheet.create({
   errorMessageBoxText: {
     color: 'red',
     textAlign: 'center',
-    fontSize: 10
+    fontSize: 20,
+    backgroundColor: 'transparent',
+    fontStyle: 'italic'
+  },
+  brand: {
+    width: 175,
+    height: 85, 
+    marginBottom: 50
   }
 }); // end styles
