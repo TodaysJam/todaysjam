@@ -2,6 +2,7 @@ import exponent from 'exponent';
 import React, { Component, PropTypes } from 'react';
 import { Form, Image, TextInput, View, StyleSheet, ScrollView, Text, TouchableOpacity } from 'react-native';
 import Router from '../Navigation/Router';
+import { Components } from 'exponent';
 
 export default class LoginScreen extends Component {
   constructor() {
@@ -52,7 +53,10 @@ export default class LoginScreen extends Component {
     var hiddenText = this.state.errBoxInit ? "Incorrect Password or Username" : "";
     
     return (
-      <View style={styles.viewContainer}>
+      <Components.LinearGradient 
+        colors={['#9e34a7', '#ad53b5']} 
+        style={styles.viewContainer} >
+
         <Text style={styles.title}>Login and Jam Out!</Text>
         {/* TextInput */}
         <TextInput
@@ -99,7 +103,7 @@ export default class LoginScreen extends Component {
           <Text style={styles.errorMessageBoxText}>{hiddenText}</Text>
         </View>
 
-      </View> // end View container
+      </Components.LinearGradient>
     );
   } // end render
 } // end exports default
