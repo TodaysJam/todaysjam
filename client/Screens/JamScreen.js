@@ -55,48 +55,49 @@ export default class DiscoverScreen extends Component {
       <Components.LinearGradient 
         colors={['#9e34a7', '#ad53b5']}
         style={styles.viewContainer} >
+
         <ScrollView>
-        {/* View Image */}
-        <View style={styles.header}>
-          <Image 
-            source={require('../.././assets/todaysjambrand2.png')}
-            style={styles.image} 
-            />
-        </View>
-
-        <View style={styles.formContainer}>
-          <View style={styles.inputForm}>
-
-            {/* View Image text */}
-            <Text style={styles.headerText}>Create your Jam!</Text>
-
-            {/* TextInput */}
-            <TextInput
-              style={styles.textInputName}
-              placeholder='Jam Name'
-              onChangeText={(jamName) => this.setState({jamName: jamName})}
-              value={this.state.jamName}
-            />
-
-            {/* AutoGrowingTextInput: allow multiple lines input*/}
-            <AutoGrowingTextInput
-              style={styles.textInputDescription}
-              placeholder='Jam Description'
-              onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
-              value={this.state.jamDescription}
-            /> 
-            
+          {/* View Image */}
+          <View style={styles.header}>
+            <Image 
+              source={require('../.././assets/todaysjambrand2.png')}
+              style={styles.image} 
+              />
           </View>
 
-          {/* Touchable */}
-          <TouchableOpacity
-            onPress={this.createPressHandler.bind(this)}
-            style={styles.inputButton}
-          >
-            <Text style={styles.buttonText}>Submit</Text>
-          </TouchableOpacity>
+          <View style={styles.formContainer}>
+            <View style={styles.inputForm}>
 
-        </View>
+              {/* View Image text */}
+              <Text style={styles.headerText}>Create your Jam!</Text>
+
+              {/* TextInput */}
+              <TextInput
+                style={styles.textInputName}
+                placeholder='Jam Name'
+                onChangeText={(jamName) => this.setState({jamName: jamName})}
+                value={this.state.jamName}
+              />
+
+              {/* AutoGrowingTextInput: allow multiple lines input*/}
+              <AutoGrowingTextInput
+                style={styles.textInputDescription}
+                placeholder='Jam Description'
+                onChangeText={(jamDescription) => this.setState({jamDescription: jamDescription})}
+                value={this.state.jamDescription}
+              /> 
+              
+            </View>
+
+            {/* Touchable */}
+            <TouchableOpacity
+              onPress={this.createPressHandler.bind(this)}
+              style={styles.inputButton}
+            >
+              <Text style={styles.buttonText}>Submit</Text>
+            </TouchableOpacity>
+
+          </View>
         </ScrollView>
       </Components.LinearGradient> // end view container
     );
@@ -116,7 +117,7 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 40,
-    marginLeft: 110,
+    marginLeft: 100,
     marginTop: 30,
     marginBottom: 10
   },
