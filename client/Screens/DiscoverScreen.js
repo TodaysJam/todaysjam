@@ -117,7 +117,7 @@ export default class DiscoverScreen extends React.Component {
 const styles = StyleSheet.create({
   viewContainer: {
     flex: 1,
-    backgroundColor: '#9e34a7',
+    backgroundColor: 'transparent',
     borderRadius: 7,
   },
   jamDescription: {
@@ -127,14 +127,16 @@ const styles = StyleSheet.create({
     borderRadius: 7,
   },
   headerText: {
-    marginLeft: 5,
+    marginLeft: 8,
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white'
   },
   descriptionText: {
     fontSize: 16,
-    borderRadius: 7
+    borderRadius: 7,
+    marginLeft: 1,
+    backgroundColor: 'transparent'
   },
   addJamText: {
     fontSize: 12,
