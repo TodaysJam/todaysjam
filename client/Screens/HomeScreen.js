@@ -8,6 +8,7 @@ import {
   ListView,
   Image
 } from 'react-native';
+import { Components } from 'exponent';
 
 //homepage with active groups and find/create button
 export default class HomeScreen extends React.Component { 
@@ -48,7 +49,10 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       //essentially a div element
-      <View style={styles.container}>
+      <Components.LinearGradient 
+        colors={['#9e34a7', '#ad53b5']} 
+        style={styles.viewContainer} >
+
         {/* View Header Image */}
         <View style={styles.header}>
           <Image 
@@ -82,13 +86,13 @@ export default class HomeScreen extends React.Component {
         />
         </ScrollView>
         
-      </View> // end view container
+      </Components.LinearGradient>
     );
   } // end render
 } // end exports default
 
 const styles = StyleSheet.create({
-  container: {
+  viewContainer: {
     flex: 1,
     backgroundColor: '#9e34a7',
   },
