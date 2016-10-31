@@ -110,9 +110,9 @@ describe('creating and checking in to Jamz', function() {
         })
         done();
     });
-  }); // 'Account Creation'
+  }); // 'Jam Creation'
 
-  describe('Jam checkin', function() {
+  describe('Jam Check In', function() {
 
     // beforeEach(function(done) {
       
@@ -138,6 +138,6 @@ describe('creating and checking in to Jamz', function() {
       });
     });
 
-  }); // Account Login
+  }); // Jam Check In
 
 });

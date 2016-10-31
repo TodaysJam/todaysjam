@@ -1,6 +1,6 @@
-# Project Name
+# Jamz
 
-> Pithy project description
+> Jamz is your personal accountability and activity tracking app
 
 ## Team
 
