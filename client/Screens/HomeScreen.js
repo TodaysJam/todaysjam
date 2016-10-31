@@ -191,7 +191,7 @@ export default class HomeScreen extends React.Component {
           <View>
             <Text style={{fontSize: 24, marginBottom: 10}}>Jam Details:</Text>
             <Text style={{fontSize: 16}}>{`Jam Name: ${modalInfo.name}`}</Text>
-            <Text style={{fontSize: 16}}>{`points: ${modalInfo.name}`}</Text>
+            <Text style={{fontSize: 16}}>{`Points: ${modalInfo.score}`}</Text>
             <Text style={{fontSize: 16}}>{`Jam Description: ${modalInfo.description}`}</Text>
             <View style={styles.buttons}>
               <TouchableOpacity
