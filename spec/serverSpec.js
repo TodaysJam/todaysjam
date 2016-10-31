@@ -16,7 +16,7 @@ var User = require('../server/userdb');
 // NOTE: these tests are designed for mongo!
 /////////////////////////////////////////////////////
 
-describe('server and api calls', function() {
+describe('login and signup api calls', function() {
 
   beforeEach(function(done) {
     // Delete objects from db so they can be created later for the test
@@ -52,23 +52,6 @@ describe('server and api calls', function() {
         })
         done();
     });
-
-    // it('Successful signup logs in a new user', function(done) {
-    //   request(app)
-    //     .post('/signup')
-    //     .send({
-    //       'username': 'Phillip',
-    //       'password': 'Phillip' })
-    //     .expect(302)
-    //     .expect(function(res) {
-    //       expect(res.headers.location).to.equal('/');
-    //       request(app)
-    //         .get('/logout')
-    //         .expect(200);
-    //     })
-    //     .end(done);
-    // });
-
   }); // 'Account Creation'
 
   describe('Account Login:', function() {
@@ -90,9 +73,6 @@ describe('server and api calls', function() {
           'username': 'Phillip',
           'password': 'Phillip' })
         .expect(200)
-        // .expect(function(res) {
-        //   expect(res.headers.location).to.equal('/');
-        // })
         .end(done);
     });
 
@@ -107,6 +87,75 @@ describe('server and api calls', function() {
         //   expect(res.headers.location).to.equal('/login');
         // })
         .end(done);
+    });
+
+  }); // Account Login
+
+});
+
+describe('creating and checking in to Jamz', function() {
+
+  // beforeEach(function(done) {
+  //   // Delete objects from db so they can be created later for the test
+  //   // User.remove({username: 'Savannah'}).exec();
+  //   // User.remove({username: 'Phillip'}).exec();
+  //   request(app)
+  //     .get('/logout')
+  //     .end(function(err, res) {
+  //       // Delete objects from db so they can be created later for the test
+
+  //       User.remove({username: 'Svnh'}).exec();
+  //       User.remove({username: 'Phillip'}).exec();
+  //       done();
+  //     });
+
+  // });
+
+
+  describe('Jam Creation:', function() {
+
+    it('Create a new Jam', function(done) {
+      request(app)
+        .post('/api/jams/create')
+        .send({
+          'name': 'Testing Jam12312',
+          'description': 'This is a testing jam' })
+        .expect(200)
+        .expect(function() {
+          Jam.findOne({'name': 'Testing Jam12312'})
+            .exec(function(err, jam) {
+              expect(jam.public).to.equal(true);
+              expect(jam.score).to.equal(0);
+            });
+        })
+        done();
+    });
+  }); // 'Account Creation'
+
+  describe('Jam checkin', function() {
+
+    // beforeEach(function(done) {
+      
+    // });
+
+    it('Checking in should increase the Jams score', function(done) {
+      var newJam = new Jam({
+        'name': 'checkingTesting',
+        'description': 'this is a testing jam to checkin'
+      });
+      newJam.save(function() {
+        request(app)
+          .post('/api/users/jams/checkin')
+          .send({'id': newJam.id})
+          .expect(200)
+          .expect(function() {
+            Jam.findById(newJam.id)
+              .exec(function (err, jam) {
+                expect(jam.score).to.equal(1);
+              });
+          })
+          done();
+      });
     });
 
   }); // Account Login

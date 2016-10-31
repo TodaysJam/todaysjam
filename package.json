@@ -6,7 +6,7 @@
   "private": true,
   "main": "index.ios.js",
   "scripts": {
-    "test": "mocha --bail --reporter nyan spec/*.js;",
+    "test": "mocha --bail spec/*.js;",
     "start": "node server/server.js"
   },
   "dependencies": {
