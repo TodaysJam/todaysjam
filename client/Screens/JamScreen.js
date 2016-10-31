@@ -31,6 +31,10 @@ export default class DiscoverScreen extends Component {
       if(res.status === 200) {
         console.log('New Jam Has Been Saved.');
       }
+      this.setState({
+        jamName: '',
+        jamDescription: ''
+      })
         //add a message
       //if(res.status === xxx)
         //if something wrong happen in the database
