@@ -6,7 +6,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   ListView,
-  Image
+  Image,
+  RefreshControl
 } from 'react-native';
 import { Components } from 'exponent';
 
@@ -18,6 +19,7 @@ export default class HomeScreen extends React.Component {
     //generate rows that contain all current jam groups
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
+      refreshing: false,
       dataSource: this.ds.cloneWithRows([
         {
           name: '',
@@ -37,13 +39,10 @@ export default class HomeScreen extends React.Component {
       }
     })
     .then((results) => {
-      console.log('ressssssssssss', results);
-      console.log('response', results._bodyText);
-        this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(results._bodyText))});
+      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(results._bodyText))});
     })
     .catch((err) => {
-      console.log('errorrrr');
-      return console.log(JSON.parse(err));
+      console.log(JSON.parse(err));
     });
   } // end componentWillMount
 
@@ -61,6 +60,7 @@ export default class HomeScreen extends React.Component {
     .then((res) => {
       //update the entry of dataSource, with the response from the server
       var updatedDataSource = Object.assign({}, this.state.dataSource)._dataBlob.s1;
+      console.log('dataSource: ', this.state.dataSource);
       console.log('real data', updatedDataSource);
       console.log('the one changing: ', updatedDataSource[index]);
       updatedDataSource[index]=JSON.parse(res._bodyText);
@@ -70,6 +70,23 @@ export default class HomeScreen extends React.Component {
       console.log('error message: ', err);
     })
   }// checkin function to fire ajax call to the server to check in an event
+
+  _onRefresh() {
+    this.setState({refreshing: true});
+    fetch('https://todaysjam.herokuapp.com/api/users/jams/' + global._globalUserId, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((results) => {
+      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(results._bodyText)), refreshing: false});
+    })
+    .catch((err) => {
+      console.log(JSON.parse(err));
+    });
+  }
 
   render() {
     return (
@@ -90,34 +107,47 @@ export default class HomeScreen extends React.Component {
         <Text style={styles.headerText}>Your Jams</Text>
 
         {/* ScrollView */}
-        <ScrollView style={styles.viewContainer}>
-         <ListView
-          dataSource={this.state.dataSource}
-          //creates all the jams dynamically 
-          //with input from database
-          enableEmptySections={true}
-          renderRow={(rowData, i, index) => (
-            <View key={i} style={styles.jamView}>
-              <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
-              <Text style={styles.descriptionText} >Points: {rowData.score}</Text>
-              <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
-              <View>
-                <TouchableOpacity 
-                  onPress={this.checkin.bind(this, rowData, index)}
-                  style={
-                    rowData.lastCheckin ? 
-                      (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? styles.jamNeedtoCheckinButton : styles.jamCheckinButton) 
-                    : styles.jamNeedtoCheckinButton}>
-                  <Text style={styles.jamCheckinText}>
-                    {rowData.lastCheckin ? 
-                      (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? 'Check In' : 'Mission Completed')  
-                    : 'Check In'}
-                  </Text>
-                </TouchableOpacity>
+        <ScrollView 
+          style={styles.viewContainer}
+          //refreshControl enable the the function of updating info by swiping down
+          refreshControl={
+            <RefreshControl
+              refreshing={this.state.refreshing}
+              title="Updating Jams Info..."
+              titleColor="#00b33c"
+              onRefresh={this._onRefresh.bind(this)}
+            />
+          }
+        >
+          <ListView
+            dataSource={this.state.dataSource}
+            //creates all the jams dynamically 
+            //with input from database
+            enableEmptySections={true}
+            renderRow={(rowData, i, index) => (
+              <View key={i} style={styles.jamView}>
+                <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
+                <Text style={styles.descriptionText} >Points: {rowData.score}</Text>
+                <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
+                <View>
+                  <TouchableOpacity
+                    //disable the button when the button is green, which is the 'mission completed' function
+                    disabled={!!rowData.lastCheckin && (Date.now()-Date.parse(rowData.lastCheckin) < global._globalRefreshingInterval)}
+                    onPress={this.checkin.bind(this, rowData, index)}
+                    style={
+                      rowData.lastCheckin ? 
+                        (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? styles.jamNeedtoCheckinButton : styles.jamCheckinButton) 
+                      : styles.jamNeedtoCheckinButton}>
+                    <Text style={styles.jamCheckinText}>
+                      {rowData.lastCheckin ?
+                        (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? 'Checking in Jam!' : 'Mission Completed')  
+                      : 'Checking in Jam!'}
+                    </Text>
+                  </TouchableOpacity>
+                </View>
               </View>
-            </View>
-          )}
-        />
+            )}
+          />
         </ScrollView>
         
       </Components.LinearGradient>
