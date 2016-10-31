@@ -9,8 +9,11 @@ import {
   Image,
   RefreshControl
 } from 'react-native';
+import Dimensions from 'Dimensions';
+
 import { Components } from 'exponent';
 
+global._globalHeaderOffset = (Dimensions.get('window').width - 100) / 2;
 global._globalRefreshingInterval = 60000;
 //homepage with active groups and find/create button
 export default class HomeScreen extends React.Component { 
@@ -213,7 +216,7 @@ const styles = StyleSheet.create({
   brand: {
     width: 100,
     height: 40, 
-    marginLeft: 110, 
+    marginLeft: global._globalHeaderOffset, 
     marginTop: 30, 
     marginBottom: 10
   }

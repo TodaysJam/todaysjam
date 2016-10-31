@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   brand: {
     width: 100, 
     height: 40, 
-    marginLeft: 110, 
+    marginLeft: global._globalHeaderOffset, 
     marginTop: 30, 
     marginBottom: 10
   }
