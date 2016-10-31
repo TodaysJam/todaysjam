@@ -13,7 +13,7 @@ export default class SignOutScreen extends Component {
   signOutPressHandler() {
     //use getNavigator to get to the root level
     global._globalUsername = undefined;
-    this.props.navigation.getNavigator('root').push(Router.getRoute('Login'));
+    this.props.navigation.getNavigator('root').replace(Router.getRoute('Login'));
   } // end signoutPressHandler
 
   // returns users to homepage if logout icon was accidentally clicked, they can also use the navbar this is just a convenience

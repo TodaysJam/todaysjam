@@ -33,7 +33,7 @@ export default class LoginScreen extends Component {
         //redirect into index, --> do something within session/token
         global._globalUserId = JSON.parse(res._bodyInit)._id;
         global._globalUsername = this.state.Username
-        this.props.navigator.push(Router.getRoute('rootNavigation'));
+        this.props.navigator.replace(Router.getRoute('rootNavigation'));
       } else if (res.status === 404) {
         // username doesn't exist
         console.log('incorect information');
