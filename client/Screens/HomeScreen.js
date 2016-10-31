@@ -60,6 +60,7 @@ export default class HomeScreen extends React.Component {
     .then((res) => {
       //update the entry of dataSource, with the response from the server
       var updatedDataSource = Object.assign({}, this.state.dataSource)._dataBlob.s1;
+      console.log('dataSource: ', this.state.dataSource);
       console.log('real data', updatedDataSource);
       console.log('the one changing: ', updatedDataSource[index]);
       updatedDataSource[index]=JSON.parse(res._bodyText);
@@ -129,7 +130,9 @@ export default class HomeScreen extends React.Component {
                 <Text style={styles.descriptionText} >Points: {rowData.score}</Text>
                 <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
                 <View>
-                  <TouchableOpacity 
+                  <TouchableOpacity
+                    //disable the button when the button is green, which is the 'mission completed' function
+                    disabled={!!rowData.lastCheckin && (Date.now()-Date.parse(rowData.lastCheckin) < global._globalRefreshingInterval)}
                     onPress={this.checkin.bind(this, rowData, index)}
                     style={
                       rowData.lastCheckin ? 
