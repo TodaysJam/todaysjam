@@ -101,7 +101,6 @@ export default class DiscoverScreen extends React.Component {
               <View style={styles.jamDescription}>
                 <Text style={styles.descriptionText} >Jam Name: {rowData.name}</Text>
                 <Text style={styles.descriptionText} >Description: {rowData.description}</Text>
-                <Text style={styles.descriptionText} >Score: {rowData.score}</Text>
               </View>
 
               {/* Touchable */}
@@ -147,9 +146,10 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   addJamText: {
-    fontSize: 12,
+    fontSize: 18,
     fontWeight: 'bold',
     textAlign: 'center',
+    flexDirection: 'row',
     color: 'white',
     borderRadius: 7
   },
@@ -174,12 +174,14 @@ const styles = StyleSheet.create({
   },
   addJamButton: {
     borderWidth: 2,
-    borderRadius: 7,
+    borderRadius: 25,
     width: 130,
     borderColor: 'gray',
     backgroundColor: '#00b33c',
     alignSelf: 'flex-end',
-    flex: 10
+    flex: 10,
+    marginBottom: 10,
+    marginRight: 10
   },
   brand: {
     width: 100, 
