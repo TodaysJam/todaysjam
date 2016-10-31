@@ -146,15 +146,18 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent'
   },
   addJamText: {
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
     flexDirection: 'row',
     color: 'white',
+    marginTop: 5,
     borderRadius: 7
   },
   jamView: {
     borderWidth: 1,
+    flex: 1, 
+    flexDirection: 'row',
     borderRadius: 7,
     height: 100,
     marginLeft: 7,
@@ -162,24 +165,27 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     borderColor: 'gray',
     backgroundColor: '#fff',
+    padding: 5
   },  
   addedButton: {
     borderWidth: 2,
     borderRadius: 7,
-    width: 130,
+    width: 80,
+    height: 50,
     borderColor: 'gray',
     backgroundColor: 'red',
     alignSelf: 'flex-end',
-    flex: 10
+    marginBottom: 10,
+    marginRight: 10
   },
   addJamButton: {
     borderWidth: 2,
-    borderRadius: 25,
-    width: 130,
+    borderRadius: 7,
+    width: 80,
+    height: 50,
     borderColor: 'gray',
     backgroundColor: '#00b33c',
     alignSelf: 'flex-end',
-    flex: 10,
     marginBottom: 10,
     marginRight: 10
   },
