@@ -83,9 +83,6 @@ describe('login and signup api calls', function() {
           'username': 'Fred',
           'password': 'Fred' })
         .expect(404)
-        // .expect(function(res) {
-        //   expect(res.headers.location).to.equal('/login');
-        // })
         .end(done);
     });
 
@@ -94,23 +91,6 @@ describe('login and signup api calls', function() {
 });
 
 describe('creating and checking in to Jamz', function() {
-
-  // beforeEach(function(done) {
-  //   // Delete objects from db so they can be created later for the test
-  //   // User.remove({username: 'Savannah'}).exec();
-  //   // User.remove({username: 'Phillip'}).exec();
-  //   request(app)
-  //     .get('/logout')
-  //     .end(function(err, res) {
-  //       // Delete objects from db so they can be created later for the test
-
-  //       User.remove({username: 'Svnh'}).exec();
-  //       User.remove({username: 'Phillip'}).exec();
-  //       done();
-  //     });
-
-  // });
-
 
   describe('Jam Creation:', function() {
 
