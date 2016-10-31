@@ -1,8 +1,8 @@
 {
-  "name": "todaysjam",
+  "name": "Jamz",
   "version": "0.0.0",
-  "description": "Hello Exponent!",
-  "author": null,
+  "description": "sign in and jam out!",
+  "author": "todaysjam",
   "private": true,
   "main": "index.ios.js",
   "scripts": {
@@ -16,11 +16,9 @@
     "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.4.6",
     "body-parser": "^1.15.2",
-    "chai": "^3.5.0",
     "exponent": "^10.0.4",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
-    "mocha": "^3.1.2",
     "mongodb": "^2.2.10",
     "mongoose": "^4.6.4",
     "nodemon": "^1.11.0",
@@ -28,7 +26,16 @@
     "react-native": "github:exponentjs/react-native#sdk-10.1.2",
     "react-native-autogrow-textinput": "^2.1.1",
     "react-native-material-design": "^0.3.7",
-    "request": "^2.75.0",
-    "supertest": "^2.0.1"
+    "request": "^2.75.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.18.0",
+    "enzyme": "^2.5.1",
+    "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-native-mock": "^0.2.7",
+    "supertest": "^2.0.1",
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
   }
 }
