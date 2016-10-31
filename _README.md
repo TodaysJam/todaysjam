@@ -19,16 +19,15 @@
 1. [Contributing](#contributing)
 
 ## Usage
-
-> Some usage instructions
+Jamz is your personal accountability and activity tracking app.  Users are able to login and set personal goals, or Jamz, such as reminding to stay on top of their current diet or exercise regime, keep on top of a new language or really anything. Users will then have a set reminder every 24 hours. Users can then find other users' jamz from the Discovery tab and add them to their own pair or share their jamz with others. By tracking their accountability through a Jamz' "Score", users can keep track of their history. 
 
 ## Requirements
 
-- Node 0.10.x
-- Redis 2.6.x
-- Postgresql 9.1.x
-- etc
-- etc
+- Node
+- MongoDB
+- mLab Cloud Mongo database
+- React Native 
+- Exponent for Desktop and Mobile device
 
 ## Development
 
@@ -41,16 +40,13 @@ npm install -g react-native-cli
 
 From within the root directory:
 
-```sh
-sudo npm install -g bower
-npm install
-bower install
-```
+sudo npm install
+
+To open the project in Exponent, select Project > Open Project and select the root directory and once the project opens and is ready to use, you can then click Send Link and send a link to the phone you will be testing on. If you installed watchman on your computer, it will auto refersh the app on your phone every time 
 
 ### Roadmap
 
-View the project roadmap [here](LINK_TO_PROJECT_ISSUES)
-
+View the project roadmap [here](https://www.pivotaltracker.com/n/projects/1904057)
 
 ## Contributing
 
