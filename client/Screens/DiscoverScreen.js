@@ -34,8 +34,14 @@ export default class DiscoverScreen extends React.Component {
       }
     })
     .then((res) => {
-      this.setState({dataSource: this.ds.cloneWithRows(JSON.parse(res._bodyText))});
-    })
+      var newArr = [];
+      JSON.parse(res._bodyText).forEach(function(jam) {
+        if (jam.user[0] !== global._globalUserId) {
+          newArr.push(jam);
+        }
+      });
+      this.setState({dataSource: this.ds.cloneWithRows(newArr)});
+    });
   } // end componentWillMount
 
   addJamPressHandler () {
