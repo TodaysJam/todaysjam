@@ -166,8 +166,8 @@ export default class HomeScreen extends React.Component {
                       : styles.jamNeedtoCheckinButton}>
                     <Text style={styles.jamCheckinText}>
                       {rowData.lastCheckin ?
-                        (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? 'Checking in Jam!' : 'Mission Completed')  
-                      : 'Checking in Jam!'}
+                        (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? 'Jam\nOut!' : 'Mission Completed')  
+                      : 'Jam\nOut!'}
                     </Text>
                   </TouchableOpacity>
                   <TouchableOpacity 
@@ -193,17 +193,19 @@ export default class HomeScreen extends React.Component {
             <Text style={{fontSize: 16}}>{`Jam Name: ${modalInfo.name}`}</Text>
             <Text style={{fontSize: 16}}>{`points: ${modalInfo.name}`}</Text>
             <Text style={{fontSize: 16}}>{`Jam Description: ${modalInfo.description}`}</Text>
-            <TouchableOpacity
-               disabled={!!modalInfo.lastCheckin && (Date.now()-Date.parse(modalInfo.lastCheckin) < global._globalRefreshingInterval)}
-               style={{margin: 5}}
-               onPress={() => setTimeout(this.modalCheckin.bind(this, modalInfo, modalindex), 1)}>
-               <Text>Check In</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-               style={{margin: 5}}
-               onPress={() => this.setState({open: false})}>
-               <Text>Close modal</Text>
-            </TouchableOpacity>
+            <View style={styles.buttons}>
+              <TouchableOpacity
+                 disabled={!!modalInfo.lastCheckin && (Date.now()-Date.parse(modalInfo.lastCheckin) < global._globalRefreshingInterval)}
+                 style={{margin: 5}}
+                 onPress={() => setTimeout(this.modalCheckin.bind(this, modalInfo, modalindex), 1)}>
+                 <Text>Check In</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                 style={{margin: 5}}
+                 onPress={() => this.setState({open: false})}>
+                 <Text>Close modal</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </Modal>
       </Components.LinearGradient>
@@ -216,11 +218,15 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'transparent',
   },
+  buttons: {
+    alignItems: 'center'
+  },
   jamCheckinText: {
     fontSize: 12,
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white',
+    marginTop: 2
   },
   descriptionText: {
     fontSize: 16,
@@ -237,10 +243,10 @@ const styles = StyleSheet.create({
   jamView: {
     borderWidth: 1,
     borderRadius: 9,
-    height: 110,
+    height: 115,
     marginLeft: 5,
     marginRight: 5,
-    marginBottom: 2,
+    marginBottom: 10,
     flexDirection: 'column',
     flex: 1,
     backgroundColor: '#fff',
@@ -250,31 +256,34 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'gray',
-    width: 90,
+    width: 180,
+    height: 40,
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 1,
+    marginLeft: 10,
     backgroundColor: '#00b33c'
   },
   jamNeedtoCheckinButton: {
     borderWidth: 2,
-    borderRadius: 5,
+    borderRadius: 7,
     borderColor: 'gray',
-    width: 90,
+    width: 180,
+    height: 40,
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 1,
+    marginLeft: 10,
     backgroundColor: 'red'
   },
   jamCheckinDetailsButton: {
     borderWidth: 2,
     borderRadius: 5,
     borderColor: 'gray',
-    width: 90,
+    width: 180,
+    height: 40,
     marginTop: 10,
     marginBottom: 10,
-    marginLeft: 1,
-    backgroundColor: 'red',
+    marginLeft: 10,
+    backgroundColor: '#00b33c'
   },
   brand: {
     width: 100,
