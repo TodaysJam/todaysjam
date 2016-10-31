@@ -10,7 +10,7 @@ import {
   RefreshControl
 } from 'react-native';
 import Dimensions from 'Dimensions';
-
+import Modal from 'react-native-simple-modal';
 import { Components } from 'exponent';
 
 global._globalHeaderOffset = (Dimensions.get('window').width - 100) / 2;
@@ -22,6 +22,7 @@ export default class HomeScreen extends React.Component {
     //generate rows that contain all current jam groups
     this.ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     this.state = {
+      open: false,
       refreshing: false,
       dataSource: this.ds.cloneWithRows([
         {
@@ -151,6 +152,26 @@ export default class HomeScreen extends React.Component {
               </View>
             )}
           />
+          <Modal
+            offset={this.state.offset}
+            open={this.state.open}
+            modalDidOpen={() => console.log('modal did open')}
+            modalDidClose={() => this.setState({open: false})}
+            style={{alignItems: 'center'}}>
+            <View>
+              <Text style={{fontSize: 20, marginBottom: 10}}>Hello world!</Text>
+              <TouchableOpacity
+                 style={{margin: 5}}
+                 onPress={() => this.setState({offset: 0})}>
+                 <Text>Check In</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                 style={{margin: 5}}
+                 onPress={() => this.setState({open: false})}>
+                 <Text>Close modal</Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
         </ScrollView>
         
       </Components.LinearGradient>
