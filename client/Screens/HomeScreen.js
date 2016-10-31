@@ -136,9 +136,9 @@ export default class HomeScreen extends React.Component {
                         (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? styles.jamNeedtoCheckinButton : styles.jamCheckinButton) 
                       : styles.jamNeedtoCheckinButton}>
                     <Text style={styles.jamCheckinText}>
-                      {rowData.lastCheckin ? 
-                        (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? 'Check In' : 'Mission Completed')  
-                      : 'Check In'}
+                      {rowData.lastCheckin ?
+                        (Date.now()-Date.parse(rowData.lastCheckin) > global._globalRefreshingInterval ? 'Checking in Jam!' : 'Mission Completed')  
+                      : 'Checking in Jam!'}
                     </Text>
                   </TouchableOpacity>
                 </View>
